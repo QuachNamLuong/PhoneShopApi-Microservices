@@ -1,0 +1,47 @@
+version: '3.4'
+
+networks:
+  phoneshopapi:
+
+services:
+  phoneshopdb:
+    container_name: phone-shop-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=TGmydb123456
+    networks:
+      - phoneshopapi
+  phoneshopapi.apigateway:
+    container_name: phone-shop-api-api-gateway
+    image: ${DOCKER_REGISTRY-}phone-shop-api.api-gateway
+    build:
+      context: .
+      dockerfile: PhoneShopApi.ApiGateway/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    ports:
+      - "8080:8080"
+    networks:
+      - phoneshopapi
+  phoneshopapi.product:
+    container_name: phone-shop-api-product
+    image: ${DOCKER_REGISTRY-}phone-shop-api.product
+    build:
+      context: .
+      dockerfile: PhoneShopApi.Product/Dockerfile
+    ports:
+      - "19001:8080"
+    depends_on:
+      - phoneshopdb
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - DB_HOST=phoneshopdb
+      - DB_NAME=PhoneShopDb
+      - DB_SA_PASSWORD=TGmydb123456
+    networks:
+      - phoneshopapi
