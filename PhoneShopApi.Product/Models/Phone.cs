@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 
-namespace PhoneShopApi.Models
+namespace PhoneShopApi.Product.Models
 {
     public class Phone
     {

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Phone.Detail;
-using PhoneShopApi.Mappers;
+using PhoneShopApi.Product.Data;
+using PhoneShopApi.Product.Dto.Phone.Detail;
+using PhoneShopApi.Product.Mappers;
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Product.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -14,7 +14,7 @@ namespace PhoneShopApi.Controllers
         private readonly PhoneShopDbContext _context = context;
 
         [HttpGet("{phoneId:int}")]
-        public async Task<IActionResult> GetPhoneDetail(int phoneId) 
+        public async Task<IActionResult> GetPhoneDetail(int phoneId)
         {
             var phoneDetail = await _context.PhoneDetails
                 .Where(pd => pd.PhoneId == phoneId)
@@ -45,7 +45,7 @@ namespace PhoneShopApi.Controllers
             phoneDetail.Screen = updatePhoneDetailRequestDto.Screen;
             phoneDetail.Sound = updatePhoneDetailRequestDto.Sound;
 
-            await _context.SaveChangesAsync();            
+            await _context.SaveChangesAsync();
             return Ok(phoneDetail.ToPhoneDetailDto());
         }
     }

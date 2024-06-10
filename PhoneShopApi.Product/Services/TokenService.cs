@@ -1,10 +1,10 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using PhoneShopApi.Interfaces;
-using PhoneShopApi.Models;
+using PhoneShopApi.Product.Interfaces;
+using PhoneShopApi.Product.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace PhoneShopApi.Services
+namespace PhoneShopApi.Product.Services
 {
     public class TokenService : ITokenService
     {

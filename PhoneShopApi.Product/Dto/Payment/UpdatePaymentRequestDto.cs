@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.Payment
+﻿namespace PhoneShopApi.Product.Dto.Payment
 {
     public class UpdatePaymentRequestDto
     {

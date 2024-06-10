@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.Phone
+﻿namespace PhoneShopApi.Product.Dto.Phone
 {
     public class UpdatePhoneRequestDto
     {

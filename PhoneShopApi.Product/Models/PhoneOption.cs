@@ -1,7 +1,6 @@
-
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhoneShopApi.Models
+namespace PhoneShopApi.Product.Models
 {
     public class PhoneOption
     {
@@ -15,7 +14,7 @@ namespace PhoneShopApi.Models
 
         public Phone Phone { get; set; } = null!;
         public BuiltInStorage BuiltInStorage { get; set; } = null!;
-        public PhoneColor PhoneColor {get; set;} = null!;
+        public PhoneColor PhoneColor { get; set; } = null!;
         public ICollection<OrderItem> OrderItems { get; set; } = null!;
         public ICollection<CartItem> CartItems { get; set; } = null!;
 

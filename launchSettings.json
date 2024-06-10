@@ -4,7 +4,8 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "phoneshopapi.product": "StartDebugging"
+        "phoneshopapi.product": "StartDebugging",
+        "phoneshopapi.auth": "StartDebugging"
       }
     }
   }

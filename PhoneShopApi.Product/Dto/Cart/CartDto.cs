@@ -1,7 +1,7 @@
 ﻿using PhoneShopApi.Models;
-using PhoneShopApi.Dto.Cart.Item;
+using PhoneShopApi.Product.Dto.Cart.Item;
 
-namespace PhoneShopApi.Dto.Cart
+namespace PhoneShopApi.Product.Dto.Cart
 {
     public class CartDto : CreateCartRequestDto
     {

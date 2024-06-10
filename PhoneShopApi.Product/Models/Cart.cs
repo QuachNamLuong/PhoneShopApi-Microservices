@@ -1,6 +1,4 @@
-﻿
-
-namespace PhoneShopApi.Models
+﻿namespace PhoneShopApi.Product.Models
 {
     public class Cart
     {

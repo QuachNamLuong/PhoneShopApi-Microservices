@@ -1,8 +1,6 @@
-﻿
-
-namespace PhoneShopApi.Models
+﻿namespace PhoneShopApi.Product.Models
 {
-    public class Payment 
+    public class Payment
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

@@ -1,6 +1,6 @@
-﻿using PhoneShopApi.Models;
+﻿using PhoneShopApi.Product.Models;
 
-namespace PhoneShopApi.Interfaces
+namespace PhoneShopApi.Product.Interfaces
 {
     public interface ITokenService
     {

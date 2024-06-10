@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 
-namespace PhoneShopApi
+namespace PhoneShopApi.Product
 {
     public class AppNotImplementedExceptionHandler(ILogger<AppExceptionHandler> logger) : IExceptionHandler
     {

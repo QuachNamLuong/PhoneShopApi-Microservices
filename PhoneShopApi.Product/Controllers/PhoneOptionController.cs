@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Phone.Option;
-using PhoneShopApi.Mappers;
 using PhoneShopApi.Models;
+using PhoneShopApi.Product.Data;
+using PhoneShopApi.Product.Dto.Phone.Option;
+using PhoneShopApi.Product.Mappers;
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Product.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -21,7 +21,7 @@ namespace PhoneShopApi.Controllers
 
         [HttpGet]
         [Route("phone/{phoneId:int}/phoneColor/{phoneColorId:int}/builtInStorageId/{builtInStorageId:int}")]
-        public async Task<IActionResult> GetPhoneOption(int phoneId, int phoneColorId, int builtInStorageId) 
+        public async Task<IActionResult> GetPhoneOption(int phoneId, int phoneColorId, int builtInStorageId)
         {
             var phoneOption = await _context.PhoneOptions
                 .Where(po => po.PhoneId == phoneId && po.BuiltInStorageId == builtInStorageId && po.PhoneColorId == phoneColorId)
@@ -117,8 +117,8 @@ namespace PhoneShopApi.Controllers
 
                 var phoneColor = new PhoneColor
                 {
-                     Name = createNewPhoneOptionRequest.PhoneColorName,
-                     ImageUrl = $"{Request.Scheme}://{Request.Host}/Uploads/PhoneImages/NotFound.jpg"
+                    Name = createNewPhoneOptionRequest.PhoneColorName,
+                    ImageUrl = $"{Request.Scheme}://{Request.Host}/Uploads/PhoneImages/NotFound.jpg"
                 };
 
                 await _context.PhoneColors.AddAsync(phoneColor);
@@ -146,7 +146,7 @@ namespace PhoneShopApi.Controllers
                 await _context.PhoneOptions.AddAsync(phoneOption);
                 var result = await _context.SaveChangesAsync();
 
-                if (result > 0) 
+                if (result > 0)
                 {
                     await transaction.CommitAsync();
                     return Ok(phoneOption.ToPhoneOptionDto());
@@ -178,7 +178,7 @@ namespace PhoneShopApi.Controllers
                             && po.PhoneColorId == createPhoneOptionRequestDto.PhoneColorId)
                 .FirstOrDefaultAsync();
             if (phoneOption != null) return BadRequest("Option existed.");
-                                                            
+
 
             var newPhoneOption = createPhoneOptionRequestDto.ToPhoneOptionFromCreatePhoneOptionRequestDto();
             await _context.PhoneOptions.AddAsync(newPhoneOption);
@@ -196,8 +196,8 @@ namespace PhoneShopApi.Controllers
             [FromBody] UpdatePhoneOptionRequest updatePhoneOptionRequest)
         {
             var phoneOption = await _context.PhoneOptions
-                .Where(po => po.PhoneId == phoneId 
-                        && po.BuiltInStorageId == builtInStorageId 
+                .Where(po => po.PhoneId == phoneId
+                        && po.BuiltInStorageId == builtInStorageId
                         && po.PhoneColorId == phoneColorId)
                 .Include(po => po.PhoneColor)
                 .FirstOrDefaultAsync();
@@ -225,7 +225,7 @@ namespace PhoneShopApi.Controllers
             phoneOption.Price = updatePhoneOptionRequest.Price;
             phoneOption.Quantity = updatePhoneOptionRequest.Quantity;
             await _context.SaveChangesAsync();
-            
+
             return Ok(phoneOption.ToPhoneOptionDto());
         }
 

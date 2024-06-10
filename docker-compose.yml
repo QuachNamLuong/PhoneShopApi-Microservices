@@ -45,3 +45,10 @@ services:
       - DB_SA_PASSWORD=TGmydb123456
     networks:
       - phoneshopapi
+
+  phoneshopapi.auth:
+    image: ${DOCKER_REGISTRY-}phoneshopapiauth
+    build:
+      context: .
+      dockerfile: ../PhoneShopApi.Auth/Dockerfile
+

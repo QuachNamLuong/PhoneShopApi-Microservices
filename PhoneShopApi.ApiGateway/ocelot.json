@@ -305,6 +305,33 @@
       "UpstreamPathTemplate": "/api/PhoneOption/phone/{phoneId}/phoneColor/{phoneColorId}/builtInStorage/{builtInStorageId}",
       "UpstreamHttpMethod": [ "PUT" ]
     }
+    /***Authentication***/
+    //Register
+    {
+      "DownstreamPathTemplate": "/api/User/Register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.product",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/User/Register",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    //Login
+    {
+      "DownstreamPathTemplate": "/api/User/Login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.product",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/User/Login",
+      "UpstreamHttpMethod": [ "POST" ]
+    }
   ],
   "GlobalConfiguration": {
     

@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.Brand
+﻿namespace PhoneShopApi.Product.Dto.Brand
 {
     public class UpdateBrandRequestDto : CreateBrandRequestDto
     {
