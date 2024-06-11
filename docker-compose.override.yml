@@ -1,7 +1,9 @@
 version: '3.4'
 
+
+
 services:
-  phoneshopapi.auth:
+  phoneshopapi.ordering:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080

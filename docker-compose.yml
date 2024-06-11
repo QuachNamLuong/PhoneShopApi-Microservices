@@ -47,8 +47,41 @@ services:
       - phoneshopapi
 
   phoneshopapi.auth:
-    image: ${DOCKER_REGISTRY-}phoneshopapiauth
+    container_name: phone-shop-api.auth
+    image: ${DOCKER_REGISTRY-}phone-shop-api.auth
     build:
       context: .
       dockerfile: ../PhoneShopApi.Auth/Dockerfile
+    ports:
+      - "19002:8080"
+    depends_on:
+      - phoneshopdb
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - DB_HOST=phoneshopdb
+      - DB_NAME=PhoneShopDb
+      - DB_SA_PASSWORD=TGmydb123456
+    networks:
+      - phoneshopapi
+
+
+  phoneshopapi.ordering:
+    container_name: phone-shop-api.ordering
+    image: ${DOCKER_REGISTRY-}phone-shop-api.ordering
+    build:
+      context: PhoneShopApi.Ordering
+      dockerfile: Dockerfile
+    ports:
+      - "19003:8080"
+    depends_on:
+      - phoneshopdb
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - DB_HOST=phoneshopdb
+      - DB_NAME=PhoneShopDb
+      - DB_SA_PASSWORD=TGmydb123456
+    networks:
+      - phoneshopapi
 

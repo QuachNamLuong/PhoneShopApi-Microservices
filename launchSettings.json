@@ -5,7 +5,8 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "phoneshopapi.product": "StartDebugging",
-        "phoneshopapi.auth": "StartDebugging"
+        "phoneshopapi.auth": "StartDebugging",
+        "phoneshopapi.ordering": "StartDebugging"
       }
     }
   }

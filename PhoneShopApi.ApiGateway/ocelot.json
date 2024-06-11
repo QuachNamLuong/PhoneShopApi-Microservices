@@ -87,7 +87,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.product",
+          "Host": "phoneshopapi.ordering",
           "Port": 8080
         }
       ],
@@ -100,7 +100,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.product",
+          "Host": "phoneshopapi.ordering",
           "Port": 8080
         }
       ],
@@ -113,7 +113,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.product",
+          "Host": "phoneshopapi.ordering",
           "Port": 8080
         }
       ],
@@ -127,7 +127,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.product",
+          "Host": "phoneshopapi.ordering",
           "Port": 8080
         }
       ],
@@ -140,7 +140,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.product",
+          "Host": "phoneshopapi.ordering",
           "Port": 8080
         }
       ],
@@ -153,7 +153,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.product",
+          "Host": "phoneshopapi.ordering",
           "Port": 8080
         }
       ],
@@ -312,7 +312,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.product",
+          "Host": "phoneshopapi.auth",
           "Port": 8080
         }
       ],
@@ -325,7 +325,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.product",
+          "Host": "phoneshopapi.auth",
           "Port": 8080
         }
       ],
