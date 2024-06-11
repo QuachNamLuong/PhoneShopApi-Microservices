@@ -8,8 +8,8 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["PhoneShopApi.Auth.csproj", "."]
-RUN dotnet restore "./PhoneShopApi.Auth.csproj"
+COPY ["PhoneShopApi.Auth/PhoneShopApi.Auth.csproj", "PhoneShopApi.Auth/"]
+RUN dotnet restore "./PhoneShopApi.Auth/PhoneShopApi.Auth.csproj"
 COPY . .
 WORKDIR "/src/."
 RUN dotnet build "./PhoneShopApi.Auth.csproj" -c $BUILD_CONFIGURATION -o /app/build
