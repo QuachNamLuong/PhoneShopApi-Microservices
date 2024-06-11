@@ -1,4 +1,4 @@
-﻿using PhoneShopApi.Models;
+﻿using PhoneShopApi.Product.Models;
 
 namespace PhoneShopApi.Product.Dto.Phone
 {

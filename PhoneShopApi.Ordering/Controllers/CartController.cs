@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Ordering.Dto;
 using PhoneShopApi.Ordering.Mappers;
+using PhoneShopApi.Ordering.Dto;
 using PhoneShopApi.Ordering.Models;
-using PhoneShopApi.Ordering.Data;
 using System.Reflection.Metadata.Ecma335;
+using PhoneShopApi.Ordering.Data;
 
 namespace PhoneShopApi.Ordering.Controllers
 {

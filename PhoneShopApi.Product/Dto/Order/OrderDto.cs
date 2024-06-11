@@ -1,4 +1,4 @@
-﻿using PhoneShopApi.Models;
+﻿using PhoneShopApi.Product.Models;
 using PhoneShopApi.Product.Dto.Order.Item;
 
 namespace PhoneShopApi.Product.Dto.Order

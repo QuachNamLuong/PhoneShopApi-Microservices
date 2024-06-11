@@ -101,7 +101,7 @@ namespace PhoneShopApi.Product.Controllers
                 await _context.SaveChangesAsync();
                 var builtInStorage = await _context.BuiltInStorages
                     .Where(b => b.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity
-                    && b.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit))
+                    && b.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit.ToLower()))
                     .FirstOrDefaultAsync();
                 if (builtInStorage == null)
                 {
@@ -128,9 +128,9 @@ namespace PhoneShopApi.Product.Controllers
                     .Where(po => po.PhoneId == phone.Id)
                     .Include(po => po.PhoneColor)
                     .Include(po => po.BuiltInStorage)
-                    .Where(po => po.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName)
+                    .Where(po => po.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName.ToLower())
                     && po.BuiltInStorage.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity
-                    && po.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit))
+                    && po.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit.ToLower()))
                     .FirstOrDefaultAsync();
                 if (phoneOption != null) return Ok(phoneOption.ToPhoneOptionDto());
 

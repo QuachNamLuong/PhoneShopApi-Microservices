@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.DTOs.Phone;
-using PhoneShopApi.Mappers;
+using PhoneShopApi.Product.Mappers;
 using PhoneShopApi.Product.Data;
 using PhoneShopApi.Product.Dto.Phone;
 using PhoneShopApi.Product.Helper;

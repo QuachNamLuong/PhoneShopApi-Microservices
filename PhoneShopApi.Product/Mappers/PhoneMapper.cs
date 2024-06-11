@@ -1,6 +1,6 @@
-﻿using PhoneShopApi.Dto.Cart;
-using PhoneShopApi.Dto.Order;
-using PhoneShopApi.Dto.BuiltInStorage;
+﻿using PhoneShopApi.Product.Dto.Cart;
+using PhoneShopApi.Product.Dto.Order;
+using PhoneShopApi.Product.Dto.BuiltInStorage;
 using PhoneShopApi.Product.Dto.Phone;
 using PhoneShopApi.Product.Models;
 using PhoneShopApi.Product.Dto.Phone.Option;

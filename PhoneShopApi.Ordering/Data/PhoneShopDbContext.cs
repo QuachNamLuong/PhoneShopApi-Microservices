@@ -52,6 +52,11 @@ namespace PhoneShopApi.Ordering.Data
                 },
                 new()
                 {
+                    Name ="Staff",
+                    NormalizedName = "STAFF"
+                },
+                new()
+                {
                     Name ="User",
                     NormalizedName = "USER"
                 }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Ordering.Models;
 using PhoneShopApi.Ordering.Interfaces;
+using PhoneShopApi.Ordering.Models;
 using PhoneShopApi.Ordering.Dto.User;
 using PhoneShopApi.Ordering.Data;
 

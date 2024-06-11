@@ -51,7 +51,7 @@ services:
     image: ${DOCKER_REGISTRY-}phone-shop-api.auth
     build:
       context: .
-      dockerfile: ../PhoneShopApi.Auth/Dockerfile
+      dockerfile: PhoneShopApi.Auth/Dockerfile
     ports:
       - "19002:8080"
     depends_on:
@@ -70,8 +70,8 @@ services:
     container_name: phone-shop-api.ordering
     image: ${DOCKER_REGISTRY-}phone-shop-api.ordering
     build:
-      context: PhoneShopApi.Ordering
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: PhoneShopApi.Ordering/Dockerfile
     ports:
       - "19003:8080"
     depends_on:

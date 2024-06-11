@@ -1,6 +1,5 @@
 ﻿using PhoneShopApi.Ordering.Dto.Order;
 using PhoneShopApi.Ordering.Dto.Order.Item;
-using PhoneShopApi.Ordering.Mappers;
 using PhoneShopApi.Ordering.Models;
 
 namespace PhoneShopApi.Ordering.Mappers

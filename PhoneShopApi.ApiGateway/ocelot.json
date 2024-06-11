@@ -304,7 +304,7 @@
       ],
       "UpstreamPathTemplate": "/api/PhoneOption/phone/{phoneId}/phoneColor/{phoneColorId}/builtInStorage/{builtInStorageId}",
       "UpstreamHttpMethod": [ "PUT" ]
-    }
+    },
     /***Authentication***/
     //Register
     {

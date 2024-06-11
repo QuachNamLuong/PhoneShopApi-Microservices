@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Mappers;
+using PhoneShopApi.Product.Mappers;
 using PhoneShopApi.Product.Data;
 using PhoneShopApi.Product.Dto.Phone.Color;
 using PhoneShopApi.Product.Interfaces.IRepository;

@@ -8,17 +8,17 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["PhoneShopApi.Order.csproj", "."]
-RUN dotnet restore "./PhoneShopApi.Order.csproj"
+COPY ["PhoneShopApi.Ordering/PhoneShopApi.Ordering.csproj", "PhoneShopApi.Ordering/"]
+RUN dotnet restore "./PhoneShopApi.Ordering/PhoneShopApi.Ordering.csproj"
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "./PhoneShopApi.Order.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/PhoneShopApi.Ordering"
+RUN dotnet build "./PhoneShopApi.Ordering.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./PhoneShopApi.Order.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./PhoneShopApi.Ordering.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "PhoneShopApi.Order.dll"]
+ENTRYPOINT ["dotnet", "PhoneShopApi.Ordering.dll"]
