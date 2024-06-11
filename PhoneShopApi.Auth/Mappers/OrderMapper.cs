@@ -1,8 +1,8 @@
-﻿using PhoneShopApi.Dto.Order;
-using PhoneShopApi.Models;
-using PhoneShopApi.Dto.Order.Item;
+﻿using PhoneShopApi.Auth.Models;
+using PhoneShopApi.Auth.Dto.Order.Item;
+using PhoneShopApi.Auth.Dto.Order;
 
-namespace PhoneShopApi.Mappers
+namespace PhoneShopApi.Auth.Mappers
 {
     public static class OrderMapper
     {

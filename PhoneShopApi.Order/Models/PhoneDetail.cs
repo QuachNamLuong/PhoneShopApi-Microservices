@@ -2,14 +2,14 @@
 
 
 
-namespace PhoneShopApi.Models
+namespace PhoneShopApi.Ordering.Models
 {
     public class PhoneDetail
     {
         public int Id { get; set; }
         public int PhoneId { get; set; }
         public Phone Phone { get; set; } = null!;
-        [Column(TypeName ="text")]
+        [Column(TypeName = "text")]
         public string Description { get; set; } = string.Empty;
         [Column(TypeName = "text")]
         public string Device { get; set; } = string.Empty;

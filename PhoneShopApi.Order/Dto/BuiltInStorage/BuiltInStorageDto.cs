@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.BuiltInStorage
+﻿namespace PhoneShopApi.Ordering.Dto.BuiltInStorage
 {
     public class BuiltInStorageDto : CreateBuiltInStorageRequestDto
     {

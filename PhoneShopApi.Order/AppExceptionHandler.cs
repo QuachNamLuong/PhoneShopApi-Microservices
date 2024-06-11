@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 
-namespace PhoneShopApi
+namespace PhoneShopApi.Ordering
 {
     public class AppExceptionHandler(ILogger<AppExceptionHandler> logger) : IExceptionHandler
     {
         public async ValueTask<bool> TryHandleAsync(
-            HttpContext httpContext, 
-            Exception exception, 
+            HttpContext httpContext,
+            Exception exception,
             CancellationToken cancellationToken)
         {
             if (exception is not NotImplementedException)

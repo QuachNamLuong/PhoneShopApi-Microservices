@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhoneShopApi.Dto.Phone.Detail
+namespace PhoneShopApi.Ordering.Dto.Phone.Detail
 {
     public class UpdatePhoneDetailRequestDto
     {

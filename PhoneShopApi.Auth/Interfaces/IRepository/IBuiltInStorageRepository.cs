@@ -1,7 +1,7 @@
-﻿using PhoneShopApi.Dto.BuiltInStorage;
-using PhoneShopApi.Models;
+﻿using PhoneShopApi.Auth.Dto.BuiltInStorage;
+using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Interfaces.IRepository
+namespace PhoneShopApi.Auth.Interfaces.IRepository
 {
     public interface IBuiltInStorageRepository
     {

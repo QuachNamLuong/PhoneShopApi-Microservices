@@ -1,7 +1,7 @@
-﻿using PhoneShopApi.Models;
-using PhoneShopApi.Dto.Phone.Color;
+﻿using PhoneShopApi.Auth.Models;
+using PhoneShopApi.Auth.Dto.Phone.Color;
 
-namespace PhoneShopApi.Interfaces.IRepository
+namespace PhoneShopApi.Auth.Interfaces.IRepository
 {
     public interface IPhoneColorRepository
     {

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PhoneShopApi.Data;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Dto.BuiltInStorage;
-using PhoneShopApi.Mappers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using PhoneShopApi.Auth.Mappers;
+using PhoneShopApi.Auth.Dto.BuiltInStorage;
+using PhoneShopApi.Auth.Interfaces.IRepository;
+using PhoneShopApi.Auth.Data;
 
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Auth.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -26,7 +26,7 @@ namespace PhoneShopApi.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById( int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var ram = await _ramRepo.GetByIdAsync(id);
 

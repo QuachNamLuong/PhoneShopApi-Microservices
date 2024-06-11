@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Identity;
 
-namespace PhoneShopApi.Models
+namespace PhoneShopApi.Auth.Models
 {
     public class User : IdentityUser
     {

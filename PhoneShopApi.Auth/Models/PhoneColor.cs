@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhoneShopApi.Models
+namespace PhoneShopApi.Auth.Models
 {
     public class PhoneColor
     {

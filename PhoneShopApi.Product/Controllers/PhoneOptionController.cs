@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Models;
+using PhoneShopApi.Product.Models;
 using PhoneShopApi.Product.Data;
 using PhoneShopApi.Product.Dto.Phone.Option;
 using PhoneShopApi.Product.Mappers;

@@ -1,10 +1,10 @@
-﻿using PhoneShopApi.Data;
-using PhoneShopApi.Models;
-using PhoneShopApi.Interfaces.IRepository;
-using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Dto.Brand;
+﻿using Microsoft.EntityFrameworkCore;
+using PhoneShopApi.Ordering.Models;
+using PhoneShopApi.Ordering.Interfaces.IRepository;
+using PhoneShopApi.Ordering.Data;
+using PhoneShopApi.Ordering.Dto.Brand;
 
-namespace PhoneShopApi.Repositories
+namespace PhoneShopApi.Ordering.Repositories
 {
     public class BrandRepository(PhoneShopDbContext context) : IBrandRepository
     {

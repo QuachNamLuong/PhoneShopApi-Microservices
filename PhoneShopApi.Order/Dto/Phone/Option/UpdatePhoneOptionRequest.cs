@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.Phone.Option
+﻿namespace PhoneShopApi.Ordering.Dto.Phone.Option
 {
     public record UpdatePhoneOptionRequest(
         int BuiltInStorageCapacity,

@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Interfaces.IRepository
+﻿namespace PhoneShopApi.Ordering.Interfaces.IRepository
 {
     public interface IOrderRepository
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhoneShopApi.Dto.Cart.Item
+namespace PhoneShopApi.Ordering.Dto.Cart.Item
 {
     public class CreateCartItemRequestDto
     {

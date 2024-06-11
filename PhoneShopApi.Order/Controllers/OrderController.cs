@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Order;
-using PhoneShopApi.Dto.Order.Item;
-using PhoneShopApi.Mappers;
-using PhoneShopApi.Models;
+using PhoneShopApi.Ordering.Models;
+using PhoneShopApi.Ordering.Data;
+using PhoneShopApi.Ordering.Dto.Order;
+using PhoneShopApi.Ordering.Dto.Order.Item;
+using PhoneShopApi.Ordering.Mappers;
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Ordering.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -103,7 +103,7 @@ namespace PhoneShopApi.Controllers
 
             await _context.SaveChangesAsync();
             return Ok(newOrder.ToOrderDto());
-            
+
         }
 
         [HttpPost]
@@ -148,7 +148,7 @@ namespace PhoneShopApi.Controllers
 
                 order.OrderItems.Add(newOrderItem);
             }
-            
+
             await _context.SaveChangesAsync();
 
             return Ok("Success");

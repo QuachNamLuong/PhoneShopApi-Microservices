@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Mappers
+﻿namespace PhoneShopApi.Auth.Mappers
 {
     public class UserMapper
     {

@@ -1,9 +1,7 @@
-﻿using PhoneShopApi.Dto.Phone.Detail;
-
-namespace PhoneShopApi.DTOs.Phone.Detail
+﻿namespace PhoneShopApi.Ordering.Dto.Phone.Detail
 {
     public class PhoneDetailDto : CreatePhoneDetailRequestDto
     {
-        public int Id { get; set; }       
+        public int Id { get; set; }
     }
 }

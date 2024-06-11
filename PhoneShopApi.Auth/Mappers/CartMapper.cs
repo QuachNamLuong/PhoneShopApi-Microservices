@@ -1,8 +1,8 @@
-﻿using PhoneShopApi.Dto.Cart;
-using PhoneShopApi.Dto.Cart.Item;
-using PhoneShopApi.Models;
+﻿using PhoneShopApi.Auth.Dto.Cart;
+using PhoneShopApi.Auth.Dto.Cart.Item;
+using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Mappers
+namespace PhoneShopApi.Auth.Mappers
 {
     public static class CartMapper
     {
@@ -15,7 +15,7 @@ namespace PhoneShopApi.Mappers
                 Items = cartModel.CartItems.Select(i => i.ToCartItemDto()).ToList()
             };
         }
-        
+
         public static Cart ToCartFromCreateCartRequestDto(this CreateCartRequestDto createCartRequestDto)
         {
             return new Cart
@@ -53,6 +53,6 @@ namespace PhoneShopApi.Mappers
             };
         }
 
- 
+
     }
 }

@@ -1,7 +1,7 @@
-﻿using PhoneShopApi.Dto.Brand;
-using PhoneShopApi.Models;
+﻿using PhoneShopApi.Ordering.Dto.Brand;
+using PhoneShopApi.Ordering.Models;
 
-namespace PhoneShopApi.Mappers
+namespace PhoneShopApi.Ordering.Mappers
 {
     public static class BrandMapper
     {

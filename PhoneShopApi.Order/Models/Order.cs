@@ -1,14 +1,13 @@
-﻿
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhoneShopApi.Models
+namespace PhoneShopApi.Ordering.Models
 {
     public class Order
     {
         public int Id { get; set; }
         public string UserId { get; set; } = null!;
         public int PaymentId { get; set; }
-        [Column(TypeName ="decimal(12,3)")]
+        [Column(TypeName = "decimal(12,3)")]
         public decimal TotalPrice { get; set; }
         public string ShippingAddress { get; set; } = string.Empty;
         public DateTime CreateAt { get; set; }

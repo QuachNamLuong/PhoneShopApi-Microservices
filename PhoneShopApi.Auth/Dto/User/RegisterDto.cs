@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PhoneShopApi.Dto.User
+namespace PhoneShopApi.Auth.Dto.User
 {
     public class RegisterDto
     {

@@ -1,8 +1,8 @@
-﻿using PhoneShopApi.Models;
-using PhoneShopApi.Dto.Phone;
-using PhoneShopApi.Helper;
+﻿using PhoneShopApi.Ordering.Dto.Phone;
+using PhoneShopApi.Ordering.Helper;
+using PhoneShopApi.Ordering.Models;
 
-namespace PhoneShopApi.Interfaces.IRepository
+namespace PhoneShopApi.Ordering.Interfaces.IRepository
 {
     public interface IPhoneRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.User
+﻿namespace PhoneShopApi.Ordering.Dto.User
 {
     public class CreateUserRequestDto
     {

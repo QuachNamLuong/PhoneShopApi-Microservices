@@ -1,7 +1,7 @@
-﻿using PhoneShopApi.Dto.BuiltInStorage;
-using PhoneShopApi.Models;
+﻿using PhoneShopApi.Ordering.Dto.BuiltInStorage;
+using PhoneShopApi.Ordering.Models;
 
-namespace PhoneShopApi.Mappers
+namespace PhoneShopApi.Ordering.Mappers
 {
     public static class BuiltInStorageMapper
     {

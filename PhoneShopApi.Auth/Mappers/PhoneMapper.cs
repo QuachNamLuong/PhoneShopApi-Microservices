@@ -1,14 +1,13 @@
-﻿using PhoneShopApi.Dto.Cart;
-using PhoneShopApi.Dto.Order;
-using PhoneShopApi.Dto.Phone.Option;
-using PhoneShopApi.Dto.Phone;
-using PhoneShopApi.Dto.BuiltInStorage;
-using PhoneShopApi.DTOs.Phone.Detail;
-using PhoneShopApi.Models;
-using PhoneShopApi.Dto.Phone.Detail;
-using PhoneShopApi.Dto.Phone.Color;
+﻿using PhoneShopApi.Auth.Dto.Cart;
+using PhoneShopApi.Auth.Dto.Order;
+using PhoneShopApi.Auth.Dto.BuiltInStorage;
+using PhoneShopApi.Auth.Models;
+using PhoneShopApi.Auth.Dto.Phone;
+using PhoneShopApi.Auth.Dto.Phone.Option;
+using PhoneShopApi.Auth.Dto.Phone.Color;
+using PhoneShopApi.Auth.Dto.Phone.Detail;
 
-namespace PhoneShopApi.Mappers
+namespace PhoneShopApi.Auth.Mappers
 {
     public static class PhoneMapper
     {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -7,8 +6,9 @@ using Microsoft.EntityFrameworkCore.Storage;
 using System.Data;
 using Microsoft.AspNetCore.Http;
 using Azure.Core;
+using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Data
+namespace PhoneShopApi.Auth.Data
 {
     public class PhoneShopDbContext : IdentityDbContext<User>
     {
@@ -32,7 +32,7 @@ namespace PhoneShopApi.Data
         public DbSet<Cart> Carts { get; set; } = null!;
         public DbSet<Phone> Phones { get; set; } = null!;
         public DbSet<Order> Orders { get; set; } = null!;
-        public DbSet<Payment> Payments { get; set; } = null!; 
+        public DbSet<Payment> Payments { get; set; } = null!;
         public DbSet<PhoneDetail> PhoneDetails { get; set; } = null!;
         public DbSet<PhoneOption> PhoneOptions { get; set; } = null!;
         public DbSet<Brand> Brands { get; set; } = null!;
@@ -592,7 +592,7 @@ namespace PhoneShopApi.Data
             modelBuilder.Entity<PhoneColor>().HasData(s24u);
         }
 
-        
+
 
         private void AddDataToPhoneOptionTable(ModelBuilder modelBuilder)
         {

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Phone;
-using PhoneShopApi.Helper;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Mappers;
-using PhoneShopApi.Models;
+using PhoneShopApi.Auth.Data;
+using PhoneShopApi.Auth.Dto.Phone;
+using PhoneShopApi.Auth.Helper;
+using PhoneShopApi.Auth.Interfaces.IRepository;
+using PhoneShopApi.Auth.Mappers;
+using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Auth.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -51,7 +51,7 @@ namespace PhoneShopApi.Controllers
         {
             var p = await _context.Phones
                 .Select(p => p)
-                .FirstOrDefaultAsync(p => p.Id == phoneId);                
+                .FirstOrDefaultAsync(p => p.Id == phoneId);
             if (p == null) return NotFound("Phone not found.");
 
             var builtInStorageIds = await _context.PhoneOptions
@@ -71,12 +71,14 @@ namespace PhoneShopApi.Controllers
         {
             var phoneColors = await _context.PhoneOptions
                 .Where(po => po.PhoneId == phoneId && po.BuiltInStorageId == builtInStorageId)
-                .Select(po => new {
+                .Select(po => new
+                {
                     po.PhoneColor.Id,
                     po.PhoneColor.ImageUrl,
                     po.PhoneColor.Name,
                     po.Price,
-                    po.Quantity})
+                    po.Quantity
+                })
                 .ToListAsync();
 
             return Ok(phoneColors);
@@ -92,7 +94,7 @@ namespace PhoneShopApi.Controllers
 
             var newPhone = createPhoneRequestDto.ToPhoneFromCreatePhoneRequestDto();
 
-            await _phoneRepo.CreateAsync(newPhone);            
+            await _phoneRepo.CreateAsync(newPhone);
 
             return CreatedAtAction(
                 nameof(Post),
@@ -129,12 +131,12 @@ namespace PhoneShopApi.Controllers
 
             var deletePhone = await _phoneRepo.DeleteByIdAsync(id);
 
-            if (deletePhone == null) 
+            if (deletePhone == null)
             {
                 return NotFound();
             }
 
             return Ok(deletePhone.ToPhoneDto());
-        }        
+        }
     }
 }

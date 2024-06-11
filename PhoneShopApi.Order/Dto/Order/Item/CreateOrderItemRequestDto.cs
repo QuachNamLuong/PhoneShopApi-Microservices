@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PhoneShopApi.Dto.Order.Item
+namespace PhoneShopApi.Ordering.Dto.Order.Item
 {
     public class CreateOrderItemRequestDto
     {

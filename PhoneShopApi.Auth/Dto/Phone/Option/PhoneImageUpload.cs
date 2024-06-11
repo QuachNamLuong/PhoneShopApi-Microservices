@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.Phone.Option
+﻿namespace PhoneShopApi.Auth.Dto.Phone.Option
 {
     public class PhoneImageUpload
     {

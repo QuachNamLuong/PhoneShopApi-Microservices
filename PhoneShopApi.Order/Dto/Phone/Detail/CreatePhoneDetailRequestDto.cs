@@ -1,7 +1,7 @@
-﻿namespace PhoneShopApi.Dto.Phone.Detail
+﻿namespace PhoneShopApi.Ordering.Dto.Phone.Detail
 {
     public class CreatePhoneDetailRequestDto : UpdatePhoneDetailRequestDto
     {
-        
+
     }
 }

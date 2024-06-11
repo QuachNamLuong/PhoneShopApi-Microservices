@@ -1,6 +1,6 @@
-﻿using PhoneShopApi.Models;
+﻿using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Dto.Phone
+namespace PhoneShopApi.Auth.Dto.Phone
 {
     public class PhoneDto : CreatePhoneRequestDto
     {

@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Helper
+﻿namespace PhoneShopApi.Auth.Helper
 {
     public class QueryPhone
     {

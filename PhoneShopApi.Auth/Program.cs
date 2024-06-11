@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using PhoneShopApi;
-using PhoneShopApi.Data;
-using PhoneShopApi.Interfaces;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Models;
-using PhoneShopApi.Repositories;
-using PhoneShopApi.Services;
+using PhoneShopApi.Auth;
+using PhoneShopApi.Auth.Data;
+using PhoneShopApi.Auth.Interfaces;
+using PhoneShopApi.Auth.Interfaces.IRepository;
+using PhoneShopApi.Auth.Models;
+using PhoneShopApi.Auth.Repositories;
+using PhoneShopApi.Auth.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.Cart
+﻿namespace PhoneShopApi.Ordering.Dto.Cart
 {
     public class CreateCartRequestDto
     {

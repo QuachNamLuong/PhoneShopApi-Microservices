@@ -1,7 +1,7 @@
-﻿using PhoneShopApi.Models;
-using PhoneShopApi.Dto.Order.Item;
+﻿using PhoneShopApi.Auth.Models;
+using PhoneShopApi.Auth.Dto.Order.Item;
 
-namespace PhoneShopApi.Dto.Order
+namespace PhoneShopApi.Auth.Dto.Order
 {
     public class OrderDto
     {

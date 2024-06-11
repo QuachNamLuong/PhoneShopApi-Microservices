@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.BuiltInStorage;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Models;
+using PhoneShopApi.Auth.Data;
+using PhoneShopApi.Auth.Dto.BuiltInStorage;
+using PhoneShopApi.Auth.Interfaces.IRepository;
+using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Repositories
+namespace PhoneShopApi.Auth.Repositories
 {
     public class BuiltInStorageRepository(PhoneShopDbContext context) : IBuiltInStorageRepository
     {

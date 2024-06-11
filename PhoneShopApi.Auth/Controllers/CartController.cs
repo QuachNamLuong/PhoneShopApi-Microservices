@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto;
-using PhoneShopApi.Mappers;
-using PhoneShopApi.Models;
+using PhoneShopApi.Auth.Data;
+using PhoneShopApi.Auth.Mappers;
+using PhoneShopApi.Auth.Dto;
+using PhoneShopApi.Auth.Models;
 using System.Reflection.Metadata.Ecma335;
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Auth.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class CartController(PhoneShopDbContext context) : Controller
     {
         private readonly PhoneShopDbContext _context = context;
-       
+
 
         [HttpGet]
         [Route("user/{userId}")]
@@ -72,14 +72,17 @@ namespace PhoneShopApi.Controllers
                 .FirstOrDefaultAsync();
             if (cartItem != null) return BadRequest("Item exist in your cart");
 
-            var newCartItem = new CartItem { 
-                                        CartId = cart.Id,
-                                        PhoneOptionId = phoneOptionId,
-                                        Quantity = 1 };
+            var newCartItem = new CartItem
+            {
+                CartId = cart.Id,
+                PhoneOptionId = phoneOptionId,
+                Quantity = 1
+            };
 
             await _context.CartItems.AddAsync(newCartItem);
             await _context.SaveChangesAsync();
-            return Ok(new {
+            return Ok(new
+            {
                 cartId = newCartItem.CartId,
                 phoneOptionId = newCartItem.PhoneOptionId,
                 quantity = newCartItem.Quantity

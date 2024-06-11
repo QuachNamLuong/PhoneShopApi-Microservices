@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Phone.Color;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Mappers;
-using PhoneShopApi.Models;
+using PhoneShopApi.Auth.Data;
+using PhoneShopApi.Auth.Dto.Phone.Color;
+using PhoneShopApi.Auth.Interfaces.IRepository;
+using PhoneShopApi.Auth.Models;
+using PhoneShopApi.Auth.Mappers;
 
-namespace PhoneShopApi.Repositories
+namespace PhoneShopApi.Auth.Repositories
 {
     public class PhoneColorRepository(PhoneShopDbContext context) : IPhoneColorRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.Payment
+﻿namespace PhoneShopApi.Auth.Dto.Payment
 {
     public class PaymentDto : CreatePaymentRequestDto
     {

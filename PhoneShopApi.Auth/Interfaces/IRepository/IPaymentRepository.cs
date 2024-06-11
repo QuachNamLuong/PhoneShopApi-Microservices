@@ -1,7 +1,7 @@
-﻿using PhoneShopApi.Dto.Payment;
-using PhoneShopApi.Models;
+﻿using PhoneShopApi.Auth.Dto.Payment;
+using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Interfaces.IRepository
+namespace PhoneShopApi.Auth.Interfaces.IRepository
 {
     public interface IPaymentRepository
     {

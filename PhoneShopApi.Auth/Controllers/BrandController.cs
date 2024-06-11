@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Brand;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Mappers;
+using PhoneShopApi.Auth.Data;
+using PhoneShopApi.Auth.Dto.Brand;
+using PhoneShopApi.Auth.Interfaces.IRepository;
+using PhoneShopApi.Auth.Mappers;
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Auth.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

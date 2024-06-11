@@ -1,7 +1,7 @@
-﻿using PhoneShopApi.Dto.Payment;
-using PhoneShopApi.Models;
+﻿using PhoneShopApi.Ordering.Dto.Payment;
+using PhoneShopApi.Ordering.Models;
 
-namespace PhoneShopApi.Mappers
+namespace PhoneShopApi.Ordering.Mappers
 {
     public static class PaymentMapper
     {

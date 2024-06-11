@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi.Dto.Phone.Color
+﻿namespace PhoneShopApi.Ordering.Dto.Phone.Color
 {
     public class PhoneColorDto : CreatePhoneColorRequestDto
     {

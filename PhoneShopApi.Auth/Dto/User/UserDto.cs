@@ -1,6 +1,6 @@
-﻿using PhoneShopApi.Models;
+﻿using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Dto.User
+namespace PhoneShopApi.Auth.Dto.User
 {
     public class UserDto
     {

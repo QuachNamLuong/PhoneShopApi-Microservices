@@ -1,7 +1,7 @@
-﻿using PhoneShopApi.Dto.Brand;
-using PhoneShopApi.Models;
+﻿using PhoneShopApi.Auth.Dto.Brand;
+using PhoneShopApi.Auth.Models;
 
-namespace PhoneShopApi.Interfaces.IRepository
+namespace PhoneShopApi.Auth.Interfaces.IRepository
 {
     public interface IBrandRepository
     {

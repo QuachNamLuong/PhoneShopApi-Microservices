@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Payment;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Models;
+using PhoneShopApi.Ordering.Data;
+using PhoneShopApi.Ordering.Dto.Payment;
+using PhoneShopApi.Ordering.Interfaces.IRepository;
+using PhoneShopApi.Ordering.Models;
 
-namespace PhoneShopApi.Repositories
+namespace PhoneShopApi.Ordering.Repositories
 {
     public class PaymentRepository(PhoneShopDbContext context) : IPaymentRepository
     {

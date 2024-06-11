@@ -1,4 +1,4 @@
-﻿namespace PhoneShopApi
+﻿namespace PhoneShopApi.Auth
 {
     public class ErrorReponse
     {

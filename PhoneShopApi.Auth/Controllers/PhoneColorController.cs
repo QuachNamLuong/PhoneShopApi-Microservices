@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Phone.Color;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Mappers;
+using PhoneShopApi.Auth.Data;
+using PhoneShopApi.Auth.Dto.Phone.Color;
+using PhoneShopApi.Auth.Interfaces.IRepository;
+using PhoneShopApi.Auth.Mappers;
 using System;
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Auth.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

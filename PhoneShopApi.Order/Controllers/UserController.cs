@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using PhoneShopApi.Data;
-using PhoneShopApi.Models;
-using PhoneShopApi.Dto.User;
-using PhoneShopApi.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using PhoneShopApi.Ordering.Models;
+using PhoneShopApi.Ordering.Interfaces;
+using PhoneShopApi.Ordering.Dto.User;
+using PhoneShopApi.Ordering.Data;
 
-namespace PhoneShopApi.Controllers
+namespace PhoneShopApi.Ordering.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -16,7 +16,7 @@ namespace PhoneShopApi.Controllers
         ITokenService tokenService,
         SignInManager<User> signInManager) : Controller
     {
-        private readonly PhoneShopDbContext _context = context; 
+        private readonly PhoneShopDbContext _context = context;
         private readonly UserManager<User> _userManager = userManager;
         private readonly ITokenService _tokenService = tokenService;
         private readonly SignInManager<User> _signInManager = signInManager;
@@ -59,7 +59,7 @@ namespace PhoneShopApi.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e);            
+                return StatusCode(500, e);
             }
         }
 
@@ -80,7 +80,7 @@ namespace PhoneShopApi.Controllers
             {
                 UserId = user.Id,
                 UserName = user.UserName,
-                Email = user.Email,                
+                Email = user.Email,
                 Token = _tokenService.CreateToken(user),
                 Address = user.Address,
                 FirstName = user.FirstName,

@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Data;
-using PhoneShopApi.Dto.Phone;
-using PhoneShopApi.DTOs.Phone;
-using PhoneShopApi.Helper;
-using PhoneShopApi.Interfaces.IRepository;
-using PhoneShopApi.Mappers;
-using PhoneShopApi.Models;
+using PhoneShopApi.Auth.Data;
+using PhoneShopApi.Auth.Dto.Phone;
+using PhoneShopApi.Auth.Helper;
+using PhoneShopApi.Auth.Interfaces.IRepository;
+using PhoneShopApi.Auth.Models;
+using PhoneShopApi.Auth.Mappers;
 
-namespace PhoneShopApi.Repositories
+namespace PhoneShopApi.Auth.Repositories
 {
     public class PhoneRepository(PhoneShopDbContext context) : IPhoneRepository
     {
@@ -52,7 +51,7 @@ namespace PhoneShopApi.Repositories
         {
             var phoneToUpdate = await _context.Phones.FindAsync(id);
 
-            if (phoneToUpdate is null) 
+            if (phoneToUpdate is null)
             {
                 return null;
             }
@@ -70,7 +69,7 @@ namespace PhoneShopApi.Repositories
         {
             newPhone.PhoneDetail = new PhoneDetail();
             await _context.Phones.AddAsync(newPhone);
-            await _context.SaveChangesAsync();        
+            await _context.SaveChangesAsync();
 
             return newPhone;
         }
@@ -91,12 +90,12 @@ namespace PhoneShopApi.Repositories
         }
 
         public async Task<ICollection<PhoneItemDto>> GetAllPhonesSellingFollowBrandAsync(QueryPhone query)
-        {       
+        {
             var listPhones = new List<PhoneItemDto>();
 
             var brands = await _context.Brands.ToListAsync();
 
-            foreach (var brand in brands) 
+            foreach (var brand in brands)
             {
                 var newPhoneItem = new PhoneItemDto
                 {
@@ -122,7 +121,7 @@ namespace PhoneShopApi.Repositories
 
                 newPhoneItem.Phones = new List<Item>();
 
-                foreach (var phone in phones) 
+                foreach (var phone in phones)
                 {
                     if (phone.PhoneOptions == null) continue;
 
@@ -147,7 +146,7 @@ namespace PhoneShopApi.Repositories
                     listPhones.Add(newPhoneItem);
                 }
             }
-            
+
 
             return listPhones;
         }
