@@ -31,9 +31,7 @@ services:
     container_name: phone-shop-api-product
     image: ${DOCKER_REGISTRY-}phone-shop-api.product
     volumes:
-      - type: bind
-        source: ./PhoneShopApi.Product/wwwroot/Uploads/PhoneImages
-        target: /PhoneImages
+      - wwwroot_data:./PhoneShopApi.Product/Uploads/PhoneImages
     build:
       context: .
       dockerfile: PhoneShopApi.Product/Dockerfile
@@ -89,5 +87,7 @@ services:
     networks:
       - phoneshopapi
 
+volumes:
+  wwwroot_data:
 
 
