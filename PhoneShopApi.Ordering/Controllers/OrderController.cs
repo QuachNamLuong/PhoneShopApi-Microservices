@@ -103,7 +103,6 @@ namespace PhoneShopApi.Ordering.Controllers
 
             await _context.SaveChangesAsync();
             return Ok(newOrder.ToOrderDto());
-
         }
 
         [HttpPost]

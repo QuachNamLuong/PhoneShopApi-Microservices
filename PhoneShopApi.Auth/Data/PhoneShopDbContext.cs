@@ -49,6 +49,11 @@ namespace PhoneShopApi.Auth.Data
                 {
                     Name ="Admin",
                     NormalizedName = "ADMIN"
+                },                
+                new()
+                {
+                    Name ="Staff",
+                    NormalizedName = "STAFF"
                 },
                 new()
                 {

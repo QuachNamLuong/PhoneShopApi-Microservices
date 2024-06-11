@@ -13,5 +13,6 @@ namespace PhoneShopApi.Product.Models
 
         public Cart Cart { get; set; } = null!;
         public ICollection<Order> Orders { get; set; } = [];
+        public ICollection<IdentityRole> Roles { get; set; } = [];
     }
 }

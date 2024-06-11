@@ -31,10 +31,7 @@ namespace PhoneShopApi.Product.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var brand = await _brandRepo.GetById(id);
-            if (brand == null)
-            {
-                return NotFound();
-            }
+            if (brand == null) return NotFound();
 
             return Ok(brand.ToBrandDto());
         }
@@ -42,10 +39,7 @@ namespace PhoneShopApi.Product.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateBrandRequestDto createBrandRequestDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var newBrand = createBrandRequestDto.ToBrandFromCreateBrandRequestDto();
             newBrand = await _brandRepo.Create(newBrand);
@@ -59,16 +53,10 @@ namespace PhoneShopApi.Product.Controllers
         [HttpPut("{Id:int}")]
         public async Task<IActionResult> Update([FromRoute] int Id, [FromBody] UpdateBrandRequestDto updateBrandDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var brandUpdated = await _brandRepo.Update(Id, updateBrandDto);
-            if (brandUpdated == null)
-            {
-                return NotFound("Brand not found.");
-            }
+            if (brandUpdated == null) return NotFound("Brand not found.");
 
             return Ok(brandUpdated.ToBrandDto());
         }
@@ -78,10 +66,7 @@ namespace PhoneShopApi.Product.Controllers
         public async Task<IActionResult> DeleteById([FromRoute] int Id)
         {
             var brandToDelete = await _brandRepo.DeleteById(Id);
-            if (brandToDelete == null)
-            {
-                return NotFound("Brand not found.");
-            }
+            if (brandToDelete == null) return NotFound("Brand not found.");
 
             return Ok("Brand deleted.");
         }

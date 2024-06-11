@@ -32,7 +32,6 @@ namespace PhoneShopApi.Product.Controllers
         public async Task<IActionResult> GetAllPhoneSellingFollowBrand([FromQuery] QueryPhone query)
         {
             var phones = await _phoneRepo.GetAllPhonesSellingFollowBrandAsync(query);
-
             return Ok(phones);
         }
 
@@ -87,10 +86,7 @@ namespace PhoneShopApi.Product.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreatePhoneRequestDto createPhoneRequestDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var newPhone = createPhoneRequestDto.ToPhoneFromCreatePhoneRequestDto();
 
@@ -105,17 +101,10 @@ namespace PhoneShopApi.Product.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdatePhoneRequestDto updatePhoneRequestDTO)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var phoneModel = await _phoneRepo.UpdateAsync(id, updatePhoneRequestDTO);
-
-            if (phoneModel == null)
-            {
-                return NotFound("Phone not found.");
-            }
+            if (phoneModel == null) return NotFound("Phone not found.");
 
             return Ok(phoneModel.ToPhoneDto());
 
@@ -124,17 +113,10 @@ namespace PhoneShopApi.Product.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var deletePhone = await _phoneRepo.DeleteByIdAsync(id);
-
-            if (deletePhone == null)
-            {
-                return NotFound();
-            }
+            if (deletePhone == null) return NotFound();
 
             return Ok(deletePhone.ToPhoneDto());
         }

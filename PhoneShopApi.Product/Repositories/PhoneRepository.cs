@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Product.Mappers;
 using PhoneShopApi.Product.Data;
 using PhoneShopApi.Product.Dto.Phone;
 using PhoneShopApi.Product.Helper;
 using PhoneShopApi.Product.Interfaces.IRepository;
+using PhoneShopApi.Product.Mappers;
 using PhoneShopApi.Product.Models;
 
 namespace PhoneShopApi.Product.Repositories
@@ -109,7 +109,6 @@ namespace PhoneShopApi.Product.Repositories
                     .ThenInclude(po => po.PhoneColor)
                     .Include(po => po.PhoneOptions)
                     .ThenInclude(po => po.BuiltInStorage)
-                    .Where(p => p.PhoneOptions.Count > 0)
                     .AsQueryable();
 
                 if (!string.IsNullOrWhiteSpace(query.Name))
@@ -123,21 +122,38 @@ namespace PhoneShopApi.Product.Repositories
 
                 foreach (var phone in phones)
                 {
-                    if (phone.PhoneOptions == null) continue;
-
-                    var item = new Item
+                    if (phone.PhoneOptions.Count <= 0)
                     {
-                        PhoneId = phone.Id,
-                        PhoneName = phone.Name,
-                        BuiltInStorageCapacity = phone.PhoneOptions.FirstOrDefault().BuiltInStorage.Capacity,
-                        BuiltInStorageUnit = phone.PhoneOptions.FirstOrDefault().BuiltInStorage.Unit ?? "N/A",
-                        PhoneColorName = phone.PhoneOptions.FirstOrDefault().PhoneColor.Name ?? "N/A",
-                        PhoneColorUrl = phone.PhoneOptions.FirstOrDefault().PhoneColor.ImageUrl ?? "N/A",
-                        Price = phone.PhoneOptions.FirstOrDefault().Price,
-                        Quantity = phone.PhoneOptions.FirstOrDefault().Quantity,
-                    };
+                        var item = new Item
+                        {
+                            PhoneId = phone.Id,
+                            PhoneName = phone.Name,
+                            BuiltInStorageCapacity = -1,
+                            BuiltInStorageUnit = "N/A",
+                            PhoneColorName = "N/A",
+                            PhoneColorUrl = "N/A",
+                            Price = -1,
+                            Quantity = -1,
+                        };
 
-                    newPhoneItem.Phones.Add(item);
+                        newPhoneItem.Phones.Add(item);
+                    }
+                    else
+                    {
+                        var item = new Item
+                        {
+                            PhoneId = phone.Id,
+                            PhoneName = phone.Name,
+                            BuiltInStorageCapacity = phone.PhoneOptions.FirstOrDefault().BuiltInStorage.Capacity,
+                            BuiltInStorageUnit = phone.PhoneOptions.FirstOrDefault().BuiltInStorage.Unit ?? "N/A",
+                            PhoneColorName = phone.PhoneOptions.FirstOrDefault().PhoneColor.Name ?? "N/A",
+                            PhoneColorUrl = phone.PhoneOptions.FirstOrDefault().PhoneColor.ImageUrl ?? "N/A",
+                            Price = phone.PhoneOptions.FirstOrDefault().Price,
+                            Quantity = phone.PhoneOptions.FirstOrDefault().Quantity,
+                        };
+
+                        newPhoneItem.Phones.Add(item);
+                    }
 
                 }
 

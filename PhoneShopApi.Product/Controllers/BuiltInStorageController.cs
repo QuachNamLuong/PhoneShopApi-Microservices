@@ -22,14 +22,13 @@ namespace PhoneShopApi.Product.Controllers
         {
             var builtInStorages = await _ramRepo.GetAllRamsAsync();
             var builtInStoragesDto = builtInStorages.Select(b => b.ToRamDto());
-            return Ok(builtInStorages);
+            return Ok(builtInStoragesDto);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
             var ram = await _ramRepo.GetByIdAsync(id);
-
             if (ram is null) return NotFound();
 
             return Ok(ram.ToRamDto());
@@ -55,7 +54,6 @@ namespace PhoneShopApi.Product.Controllers
             [FromBody] UpdateBuiltInStorageRequestDto updateRamRequestDto)
         {
             var ramUpdated = await _ramRepo.UpdateAsync(id, updateRamRequestDto);
-
             if (ramUpdated is null) return NotFound();
 
             return Ok(ramUpdated.ToRamDto());
@@ -65,10 +63,7 @@ namespace PhoneShopApi.Product.Controllers
         public async Task<IActionResult> DeleteRamById([FromRoute] int id)
         {
             var deletedRam = await _ramRepo.DeleteAsync(id);
-            if (deletedRam is null)
-            {
-                return NotFound();
-            }
+            if (deletedRam is null) return NotFound();
 
             return Ok(deletedRam.ToRamDto());
         }

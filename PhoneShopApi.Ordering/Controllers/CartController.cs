@@ -20,6 +20,7 @@ namespace PhoneShopApi.Ordering.Controllers
         [Route("user/{userId}")]
         public async Task<IActionResult> GetUserCart(string userId)
         {
+            if (!ModelState.IsValid) return BadRequest("Cannot create cart for user, please try again.");
             var cart = await _context.Carts
                 .Where(c => c.UserId == userId)
                 .Include(c => c.CartItems)
@@ -32,19 +33,16 @@ namespace PhoneShopApi.Ordering.Controllers
                 .ThenInclude(i => i.PhoneOption)
                 .ThenInclude(o => o.BuiltInStorage)
                 .FirstOrDefaultAsync();
-            if (cart == null)
-            {
-                cart = new Cart
-                {
-                    UserId = userId
-                };
-                if (!ModelState.IsValid) return BadRequest("Cannot create cart for user, please try again.");
-                await _context.Carts.AddAsync(cart);
-                await _context.SaveChangesAsync();
-            }
+            if (cart != null) return Ok(cart.ToCartDto());
 
-            var cartDto = cart.ToCartDto();
-            return Ok(cartDto);
+            cart = new Cart
+            {
+                UserId = userId
+            };
+            
+            await _context.Carts.AddAsync(cart);
+            await _context.SaveChangesAsync();  
+            return Ok(cart.ToCartDto());
         }
 
         [HttpPost]
@@ -116,10 +114,7 @@ namespace PhoneShopApi.Ordering.Controllers
                 .Where(i => i.CartId == cartId && i.PhoneOptionId == phoneOptionId)
                 .FirstOrDefaultAsync();
 
-            if (cartItem is null)
-            {
-                return NotFound();
-            }
+            if (cartItem is null) return NotFound();
 
             _context.CartItems.Remove(cartItem);
             await _context.SaveChangesAsync();

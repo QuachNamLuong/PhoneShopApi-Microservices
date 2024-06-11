@@ -34,13 +34,9 @@ namespace PhoneShopApi.Product.Controllers
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var phoneColor = await _phoneColorRepo.GetByIdAsync(id);
-            if (phoneColor is null)
-            {
-                return NotFound();
-            }
+            if (phoneColor is null) return NotFound();
 
             var phoneColorDTOs = phoneColor.ToPhoneColorDto();
-
             return Ok(phoneColorDTOs);
         }
 
@@ -56,7 +52,6 @@ namespace PhoneShopApi.Product.Controllers
             phoneColor.ImageUrl = HostUrl + imageUrl;
 
             await _context.SaveChangesAsync();
-
             return Ok(phoneColor.ToPhoneColorDto());
         }
 

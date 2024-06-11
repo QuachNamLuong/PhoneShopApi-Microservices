@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PhoneShopApi.Product.Models;
 using PhoneShopApi.Product.Data;
 using PhoneShopApi.Product.Dto.Phone.Option;
 using PhoneShopApi.Product.Mappers;
+using PhoneShopApi.Product.Models;
 
-namespace PhoneShopApi.Product.Controllers
+namespace PhoneShopApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -32,40 +32,34 @@ namespace PhoneShopApi.Product.Controllers
             return Ok(phoneOption.ToPhoneOptionDto());
         }
 
-        private async Task<string> WriteFile(IFormFile file)
+        [HttpDelete]
+        [Route("ResetPhoneOption/{phoneId:int}")]
+        public async Task<IActionResult> ResetPhoneOption(int phoneId)
         {
-            if (file == null || file.Length == 0)
+            using (var transaction = await _context.Database.BeginTransactionAsync())
             {
-                throw new ArgumentNullException(nameof(file), "The uploaded file cannot be null or empty.");
+                var phone = await _context.Phones.FirstOrDefaultAsync(p => p.Id == phoneId);
+                if (phone == null) return NotFound("phone not found.");
+
+                var phoneOptions = await _context.PhoneOptions
+                .Where(po => po.PhoneId == phoneId)
+                .ToListAsync();
+                if (phoneOptions.Count <= 0) return NotFound("phoneOptions not found.");
+
+                var phoneColors = await _context.PhoneOptions
+                    .Where(po => po.PhoneId == phoneId)
+                    .Include(po => po.PhoneColor)
+                    .Select(po => po.PhoneColor)
+                    .ToListAsync();
+                if (phoneColors.Count <= 0) return NotFound("phoneColors not found.");
+
+                _context.PhoneOptions.RemoveRange(phoneOptions);
+                _context.PhoneColors.RemoveRange(phoneColors);
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+                return Ok("Success.");
             }
-
-            string filename = "";
-            string exactpath = "";
-
-            try
-            {
-                var extension = Path.GetExtension(file.FileName); // Use Path.GetExtension for cleaner extraction
-                filename = file.FileName; // Generate unique filename with GUID
-                var uploadsFolderPath = Path.Combine(_environment.WebRootPath, "Uploads", "PhoneImages"); // Clearer path construction
-
-                // Create uploads folder if it doesn't exist
-                if (!Directory.Exists(uploadsFolderPath))
-                {
-                    Directory.CreateDirectory(uploadsFolderPath);
-                }
-
-                exactpath = Path.Combine(uploadsFolderPath, filename);
-
-                using (var stream = new FileStream(exactpath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-
-            return Path.Combine("Uploads", "PhoneImages", filename); // Return relative path
         }
 
         [HttpPost]
@@ -78,19 +72,6 @@ namespace PhoneShopApi.Product.Controllers
 
             using (var transaction = await _context.Database.BeginTransactionAsync())
             {
-                /*var brand = await _context.Brands
-                .Where(b => b.Name.ToLower().Equals(createNewPhoneOptionRequest.BrandName.ToLower()))
-                .FirstOrDefaultAsync();
-                if (brand == null)
-                {
-                    brand = new Brand
-                    {
-                        Name = createNewPhoneOptionRequest.BrandName
-                    };
-
-                    await _context.Brands.AddAsync(brand);
-                    await _context.SaveChangesAsync();
-                }*/
 
                 var phone = await _context.Phones
                     .Where(p => p.Id == phoneId)
@@ -101,7 +82,7 @@ namespace PhoneShopApi.Product.Controllers
                 await _context.SaveChangesAsync();
                 var builtInStorage = await _context.BuiltInStorages
                     .Where(b => b.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity
-                    && b.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit.ToLower()))
+                    && b.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit))
                     .FirstOrDefaultAsync();
                 if (builtInStorage == null)
                 {
@@ -128,9 +109,9 @@ namespace PhoneShopApi.Product.Controllers
                     .Where(po => po.PhoneId == phone.Id)
                     .Include(po => po.PhoneColor)
                     .Include(po => po.BuiltInStorage)
-                    .Where(po => po.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName.ToLower())
+                    .Where(po => po.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName)
                     && po.BuiltInStorage.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity
-                    && po.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit.ToLower()))
+                    && po.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit))
                     .FirstOrDefaultAsync();
                 if (phoneOption != null) return Ok(phoneOption.ToPhoneOptionDto());
 
@@ -230,7 +211,7 @@ namespace PhoneShopApi.Product.Controllers
         }
 
         [HttpDelete]
-        [Route("phone/{phoneId:int}/phoneColor/{phoneColorId:int}/builtInStorage/{builtInStorageId:int}")]
+        [Route("phone/{phoneId:int}/phoneColor/{phoneColorId:int}/ram/{builtInStorageId:int}")]
         public async Task<IActionResult> DeletePhoneOption(
             int phoneId,
             int phoneColorId,

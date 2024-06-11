@@ -8,7 +8,6 @@ using PhoneShopApi.Auth.Data;
 using PhoneShopApi.Auth.Interfaces;
 using PhoneShopApi.Auth.Interfaces.IRepository;
 using PhoneShopApi.Auth.Models;
-using PhoneShopApi.Auth.Repositories;
 using PhoneShopApi.Auth.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -112,12 +111,6 @@ builder.Services.AddAuthentication(options =>
             )
     };
 });
-
-builder.Services.AddScoped<IBrandRepository, BrandRepository>();
-builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
-builder.Services.AddScoped<IPhoneColorRepository, PhoneColorRepository>();
-builder.Services.AddScoped<IBuiltInStorageRepository, BuiltInStorageRepository>();
-builder.Services.AddScoped<IPhoneRepository, PhoneRepository>();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 

@@ -7,6 +7,7 @@ using System.Data;
 using Microsoft.AspNetCore.Http;
 using Azure.Core;
 using PhoneShopApi.Product.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PhoneShopApi.Product.Data
 {
@@ -52,11 +53,36 @@ namespace PhoneShopApi.Product.Data
                 },
                 new()
                 {
+                    Name ="Staff",
+                    NormalizedName = "STAFF"
+                },
+                new()
+                {
                     Name ="User",
                     NormalizedName = "USER"
                 }
             };
             modelBuilder.Entity<IdentityRole>().HasData(roles);
+        }
+
+        private void AddUserAccount(ModelBuilder modelBuilder)
+        {
+
+            var adminUser = new User
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "admin123",
+                Email = "admin@email.com",
+                PhoneNumber = "0836292817",
+                Address = "nowhere",
+                FirstName = "admin",
+                DateOfBirth = DateTime.Now
+            };
+            adminUser.PasswordHash = new PasswordHasher<User>().HashPassword(adminUser, "admin123!A");
+            var accounts = new List<User>{
+                adminUser,
+            };
+            modelBuilder.Entity<User>().HasData(accounts);
         }
 
 
