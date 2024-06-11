@@ -12,11 +12,11 @@ COPY ["PhoneShopApi.Auth/PhoneShopApi.Auth.csproj", "PhoneShopApi.Auth/"]
 RUN dotnet restore "./PhoneShopApi.Auth/PhoneShopApi.Auth.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "./PhoneShopApi.Auth.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./PhoneShopApi.Auth/PhoneShopApi.Auth.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./PhoneShopApi.Auth.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./PhoneShopApi.Auth/PhoneShopApi.Auth.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
