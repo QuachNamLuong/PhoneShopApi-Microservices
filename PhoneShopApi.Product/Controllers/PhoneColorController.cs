@@ -42,7 +42,7 @@ namespace PhoneShopApi.Product.Controllers
 
         [HttpPost]
         [Route("UpdateImage/{phoneColorId:int}")]
-        public async Task<IActionResult> UploadFile(IFormFile file, int phoneColorId)
+        public async Task<IActionResult> UploadFile(IFormFile file, int phoneColorId, CancellationToken cancellationToken)
         {
             var phoneColor = _context.PhoneColors.Find(phoneColorId);
             if (phoneColor == null) return NotFound("Phone color not found");
@@ -67,20 +67,14 @@ namespace PhoneShopApi.Product.Controllers
 
             try
             {
-                filename = file.FileName; // Generate unique filename with GUID
-                var uploadsFolderPath = Path.Combine(_environment.WebRootPath, "Uploads", "PhoneImages"); // Clearer path construction
+                filename = file.FileName;
 
-                // Create uploads folder if it doesn't exist
-                if (!Directory.Exists(uploadsFolderPath))
-                {
-                    Directory.CreateDirectory(uploadsFolderPath);
-                }
-
-                exactpath = Path.Combine(uploadsFolderPath, filename);
+                exactpath = Path.Combine(_environment.WebRootPath, "Uploads", "PhoneImages", filename);
 
                 using (var stream = new FileStream(exactpath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
+                    stream.Close();
                 }
             }
             catch (Exception ex)
