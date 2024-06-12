@@ -32,6 +32,7 @@ builder.Services.AddCors(options =>
 });
 
 
+
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Phone Shop API", Version = "v1" });

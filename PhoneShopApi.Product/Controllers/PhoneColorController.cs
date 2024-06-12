@@ -48,14 +48,14 @@ namespace PhoneShopApi.Product.Controllers
             if (phoneColor == null) return NotFound("Phone color not found");
 
             var imageUrl = await WriteFile(file);
-            string HostUrl = "http://14.225.207.131/";
+            string HostUrl = $"{Request.Scheme}://{Request.Host}/";
             phoneColor.ImageUrl = HostUrl + imageUrl;
 
             await _context.SaveChangesAsync();
             return Ok(phoneColor.ToPhoneColorDto());
         }
 
-        private static async Task<string> WriteFile(IFormFile file)
+        private async Task<string> WriteFile(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
@@ -66,7 +66,7 @@ namespace PhoneShopApi.Product.Controllers
 
             string filename = file.FileName;
 
-            string exactpath = Path.Combine("home/Images", filename);
+            string exactpath = Path.Combine(_environment.WebRootPath, "Uploads", "PhoneImages", filename);
 
             if (!Directory.Exists(exactpath))
             {
@@ -78,7 +78,7 @@ namespace PhoneShopApi.Product.Controllers
                 await file.CopyToAsync(stream);
             }
 
-            return filename;
+            return Path.Combine("Uploads", "PhoneImages", filename);
         }
 
         [HttpPost]
