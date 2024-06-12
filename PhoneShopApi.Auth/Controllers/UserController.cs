@@ -69,6 +69,7 @@ namespace PhoneShopApi.Auth.Controllers
         {
             if (!ModelState.IsValid) return BadRequest("Canot login now.");
 
+
             var user = await _userManager.Users
                 .FirstOrDefaultAsync(u => u.UserName == loginDto.UserName);
             if (user == null) return Unauthorized("Invalid username!.");
@@ -105,11 +106,6 @@ namespace PhoneShopApi.Auth.Controllers
 
             if (user == null) return NotFound("user not found.");
 
-            var user2 = await _context.Users
-                .Where(u => u.PhoneNumber != null && u.PhoneNumber.Equals(updateUserRequestDto.PhoneNumber))
-                .FirstOrDefaultAsync();
-
-            if (user2 != null) return NotFound("phone exist.");
 
             user.FirstName = updateUserRequestDto.FirstName;
             user.LastName = updateUserRequestDto.LastName;
