@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using PhoneShopApi.Product.Data;
 using PhoneShopApi.Product.Dto.Phone.Color;
 using PhoneShopApi.Product.Interfaces.IRepository;
 using PhoneShopApi.Product.Mappers;
-using System;
+using Firebase.Auth;
+using Firebase.Storage;
+using System.Diagnostics;
 
 namespace PhoneShopApi.Product.Controllers
 {
@@ -19,6 +19,10 @@ namespace PhoneShopApi.Product.Controllers
         private readonly PhoneShopDbContext _context = context;
         private readonly IPhoneColorRepository _phoneColorRepo = phoneColorRepo;
         private readonly IWebHostEnvironment _environment = environment;
+        private static string apiKey = "AIzaSyALimWtWPLLhZ5pAlvhRtcNGqCY5XvyG68";
+        private static string bucket = "phoneshop-9f868.appspot.com";
+        private static string AuthEmail = "admin@email.com";
+        private static string AuthPassword = "TGmyadmin123";
 
         [HttpGet]
         [Route("GetAllPhoneColor")]
@@ -63,21 +67,21 @@ namespace PhoneShopApi.Product.Controllers
                     nameof(file),
                     "The uploaded file cannot be null or empty.");
             }
+            var filename = Guid.NewGuid().ToString() + file.FileName;
 
-            string filename = file.FileName;
-
-            string exactpath = Path.Combine(_environment.WebRootPath, "Uploads", "PhoneImages", filename);
-
-            if (!Directory.Exists(exactpath))
+            try
             {
-                Directory.CreateDirectory(exactpath);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", "PhoneImages", filename);
+                using (var stream = System.IO.File.Create(path))
+                {
+                    await file.CopyToAsync(stream);
+                }
             }
-
-            using (var stream = new FileStream(exactpath, FileMode.Create))
+            catch (Exception ex )
             {
-                await file.CopyToAsync(stream);
+                return $"{Request.Scheme}://{Request.Host}/Uploads/PhoneImages/NotFound.jpg";
             }
-
+                        
             return Path.Combine("Uploads", "PhoneImages", filename);
         }
 
