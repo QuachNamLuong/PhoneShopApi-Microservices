@@ -100,12 +100,12 @@ namespace PhoneShopApi.Controllers
                     .Where(p => p.PhoneId == phoneId)
                     .Include(p => p.PhoneColor)
                     .Include(p => p.BuiltInStorage)
-                    .Where(p => p.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit)
+                    .Where(p => p.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit.ToLower())
                     && p.BuiltInStorage.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity)
                     .ToListAsync();
 
                 var phoncolor = phoneColorExist
-                    .Any(p => p.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName));
+                    .Any(p => p.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName.ToLower()));
 
                 if (phoncolor) return Ok();
                  var phoneColor = new PhoneColor
@@ -121,9 +121,9 @@ namespace PhoneShopApi.Controllers
                     .Where(po => po.PhoneId == phone.Id)
                     .Include(po => po.PhoneColor)
                     .Include(po => po.BuiltInStorage)
-                    .Where(po => po.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName)
+                    .Where(po => po.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName.ToLower())
                     && po.BuiltInStorage.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity
-                    && po.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit))
+                    && po.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit.ToLower()))
                     .FirstOrDefaultAsync();
                 if (phoneOption != null) return Ok(phoneOption.ToPhoneOptionDto());
 
