@@ -28,6 +28,14 @@ namespace PhoneShopApi.Product.Controllers
         }
 
         [HttpGet]
+        [Route("AdminGetAllPhonesSellingFollowBrand")]
+        public async Task<IActionResult> AdminGetAllPhonesSellingFollowBrand([FromQuery] QueryPhone query)
+        {
+            var phones = await _phoneRepo.GetAllPhonesSellingFollowBrandAsync(query);
+            return Ok(phones);
+        }
+
+        [HttpGet]
         [Route("AllPhonesSellingFollowBrand")]
         public async Task<IActionResult> GetAllPhoneSellingFollowBrand([FromQuery] QueryPhone query)
         {

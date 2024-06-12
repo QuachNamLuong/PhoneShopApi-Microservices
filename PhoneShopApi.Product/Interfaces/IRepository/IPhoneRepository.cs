@@ -8,6 +8,7 @@ namespace PhoneShopApi.Product.Interfaces.IRepository
     {
         Task<ICollection<Phone>> GetAllPhonesSellingAsync();
         Task<ICollection<PhoneItemDto>> GetAllPhonesSellingFollowBrandAsync(QueryPhone query);
+        Task<ICollection<PhoneItemDto>> AdminGetAllPhonesSellingFollowBrandAsync(QueryPhone query);
         Task<ICollection<Phone>> GetAllAsync();
         Task<Phone?> GetByIdAsync(int id);
         Task<Phone> CreateAsync(Phone newPhone);

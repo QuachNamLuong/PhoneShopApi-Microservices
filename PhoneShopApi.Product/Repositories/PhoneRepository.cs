@@ -166,5 +166,81 @@ namespace PhoneShopApi.Product.Repositories
 
             return listPhones;
         }
+
+        public async Task<ICollection<PhoneItemDto>> AdminGetAllPhonesSellingFollowBrandAsync(QueryPhone query)
+        {
+            var listPhones = new List<PhoneItemDto>();
+
+            var brands = await _context.Brands.ToListAsync();
+
+            foreach (var brand in brands)
+            {
+                var newPhoneItem = new PhoneItemDto
+                {
+                    BrandId = brand.Id,
+                    BrandName = brand.Name
+                };
+
+                var phonesQuery = _context.Phones
+                    .Where(p => p.BrandId == brand.Id)
+                    .Include(p => p.PhoneOptions)
+                    .ThenInclude(po => po.PhoneColor)
+                    .Include(po => po.PhoneOptions)
+                    .ThenInclude(po => po.BuiltInStorage)
+                    .AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(query.Name))
+                {
+                    phonesQuery = phonesQuery.Where(p => p.Name.Contains(query.Name));
+                }
+
+                var phones = await phonesQuery.ToListAsync();
+
+                newPhoneItem.Phones = new List<Item>();
+
+                foreach (var phone in phones)
+                {
+                    if (phone.PhoneOptions.Count <= 0)
+                    {
+                        var item = new Item
+                        {
+                            PhoneId = phone.Id,
+                            PhoneName = phone.Name,
+                            BuiltInStorageCapacity = -1,
+                            BuiltInStorageUnit = "N/A",
+                            PhoneColorName = "N/A",
+                            PhoneColorUrl = "N/A",
+                            Price = -1,
+                            Quantity = -1,
+                        };
+
+                        newPhoneItem.Phones.Add(item);
+                    }
+                    else
+                    {
+                        var item = new Item
+                        {
+                            PhoneId = phone.Id,
+                            PhoneName = phone.Name,
+                            BuiltInStorageCapacity = phone.PhoneOptions.FirstOrDefault().BuiltInStorage.Capacity,
+                            BuiltInStorageUnit = phone.PhoneOptions.FirstOrDefault().BuiltInStorage.Unit ?? "N/A",
+                            PhoneColorName = phone.PhoneOptions.FirstOrDefault().PhoneColor.Name ?? "N/A",
+                            PhoneColorUrl = phone.PhoneOptions.FirstOrDefault().PhoneColor.ImageUrl ?? "N/A",
+                            Price = phone.PhoneOptions.FirstOrDefault().Price,
+                            Quantity = phone.PhoneOptions.FirstOrDefault().Quantity,
+                        };
+
+                        newPhoneItem.Phones.Add(item);
+                    }
+
+                }
+
+                if (newPhoneItem.Phones.Count > 0)
+                {
+                    listPhones.Add(newPhoneItem);
+                }
+            }
+            return listPhones;
+        }
     }
 }

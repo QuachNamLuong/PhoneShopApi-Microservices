@@ -96,10 +96,22 @@ namespace PhoneShopApi.Controllers
                     await _context.SaveChangesAsync();
                 }
 
-                var phoneColor = new PhoneColor
+                var phoneColorExist = await _context.PhoneOptions
+                    .Where(p => p.PhoneId == phoneId)
+                    .Include(p => p.PhoneColor)
+                    .Include(p => p.BuiltInStorage)
+                    .Where(p => p.BuiltInStorage.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit)
+                    && p.BuiltInStorage.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity)
+                    .ToListAsync();
+
+                var phoncolor = phoneColorExist
+                    .Any(p => p.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName));
+
+                if (phoncolor) return Ok();
+                 var phoneColor = new PhoneColor
                 {
                     Name = createNewPhoneOptionRequest.PhoneColorName,
-                    ImageUrl = $"{Request.Scheme}://{Request.Host}/Uploads/PhoneImages/NotFound.jpg"
+                    ImageUrl = $"{Request.Scheme}://{Request.Host}/Uploads/NotFound.jpg"
                 };
 
                 await _context.PhoneColors.AddAsync(phoneColor);
