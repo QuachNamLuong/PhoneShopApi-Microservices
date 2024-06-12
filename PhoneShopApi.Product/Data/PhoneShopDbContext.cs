@@ -363,7 +363,7 @@ namespace PhoneShopApi.Product.Data
 
         private void AddDataToPhoneColorTable(ModelBuilder modelBuilder)
         {
-            var hostUrl = "http://14.225.207.131:8080";
+            var hostUrl = "http://14.225.207.131:19001";
             var iPhone15ProMax256Colors = new List<PhoneColor>
             {
                 new()
