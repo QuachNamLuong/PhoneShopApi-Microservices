@@ -113,7 +113,7 @@ namespace PhoneShopApi.Auth.Controllers
             user.Email = updateUserRequestDto.Email;
             user.Address = updateUserRequestDto.Address;
 
-            await _context.AddRangeAsync();
+            await _context.SaveChangesAsync();
 
             return Ok(updateUserRequestDto);
         }

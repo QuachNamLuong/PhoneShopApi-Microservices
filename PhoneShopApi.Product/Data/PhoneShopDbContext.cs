@@ -105,6 +105,11 @@ namespace PhoneShopApi.Product.Data
                     Id = 3,
                     Name = "Google"
                 },
+                new()
+                {
+                    Id = 3,
+                    Name = "XIAOMI"
+                },
             };
             modelBuilder.Entity<Brand>().HasData(brands);
         }
@@ -114,25 +119,25 @@ namespace PhoneShopApi.Product.Data
             var builtInStorages = new List<BuiltInStorage>
             {
                 new()
-                {//1
+                {
                     Id = 1,
                     Capacity = 128,
                     Unit = "GB"
                 },
                 new()
-                {//2
+                {
                     Id = 2,
                     Capacity = 256,
                     Unit = "GB"
                 },
                 new()
-                {//3
+                {
                     Id = 3,
                     Capacity = 512,
                     Unit = "GB"
                 },
                 new()
-                {//4
+                {
                     Id = 4,
                     Capacity = 1,
                     Unit = "T"
@@ -143,124 +148,123 @@ namespace PhoneShopApi.Product.Data
 
         private void AddDataToPhoneTable(ModelBuilder modelBuilder)
         {
-            var iPhones = new List<Phone>
+            var phones = new List<Phone>
             {
                 new()
-                {//1
+                {
                     Id = 1,
                     Name = "iPhone 15 Pro Max",
                     IsSelling = true,
                     BrandId = 1,
                 },
                 new()
-                {//2
+                {
                     Id = 2,
                     Name = "iPhone 15 Pro",
                     IsSelling = true,
                     BrandId = 1,
                 },
                 new()
-                {//3
+                {
                     Id = 3,
+                    Name = "iPhone 15 Plus",
+                    IsSelling = true,
+                    BrandId = 1,
+                },
+                new()
+                {
+                    Id = 4,
                     Name = "iPhone 14 Pro Max",
                     IsSelling = true,
                     BrandId = 1,
                 },
                 new()
-                {//4
-                    Id = 4,
+                {
+                    Id = 5,
                     Name = "iPhone 14 Pro",
                     IsSelling = true,
                     BrandId = 1,
                 },
-            };
-            modelBuilder.Entity<Phone>().HasData(iPhones);
-            var samsungs = new List<Phone>
-            {
                 new()
                 {
-                    Id = 5,
+                    Id = 6,
                     Name = "Galaxy S24",
                     IsSelling = true,
                     BrandId = 2,
                 },
                 new()
                 {
-                    Id = 6,
+                    Id = 7,
                     Name = "Galaxy S24 Ultra",
                     IsSelling = true,
                     BrandId = 2,
                 },
                 new()
                 {
-                    Id = 7,
+                    Id = 8,
                     Name = "Galaxy S24 Plus",
                     IsSelling = true,
                     BrandId = 2,
                 },
                 new()
                 {
-                    Id = 8,
+                    Id = 9,
                     Name = "Galaxy S22 Ultra",
                     IsSelling = true,
                     BrandId = 2,
                 },
                 new()
                 {
-                    Id = 9,
+                    Id = 10,
                     Name = "Galaxy S21 Ultra",
                     IsSelling = true,
                     BrandId = 2,
                 },
                 new()
                 {
-                    Id = 10,
+                    Id = 11,
                     Name = "Galaxy Note 10 Plus",
                     IsSelling = true,
                     BrandId = 2,
                 },
-            };
-            modelBuilder.Entity<Phone>().HasData(samsungs);
-            var googles = new List<Phone>
-            {
                 new()
                 {
-                    Id = 11,
+                    Id = 12,
                     Name = "Pixel 8 Pro 5G",
                     BrandId = 3,
                 },
                 new()
                 {
-                    Id = 12,
+                    Id = 13,
                     Name = "Pixel 8",
                     BrandId = 3,
                 },
                 new()
                 {
-                    Id = 13,
+                    Id = 14,
                     Name = "Pixel Fold",
                     BrandId = 3,
                 },
                 new()
                 {
-                    Id = 14,
+                    Id = 15,
                     Name = "Pixel 7",
                     BrandId = 3,
                 },
                 new()
                 {
-                    Id = 15,
+                    Id = 16,
                     Name = "Pixel 7a",
                     BrandId = 3,
                 },
                 new()
                 {
-                    Id = 16,
+                    Id = 17,
                     Name = "Pixel 7 Pro",
                     BrandId = 3,
                 },
             };
-            modelBuilder.Entity<Phone>().HasData(googles);
+            modelBuilder.Entity<Phone>().HasData(phones);
         }
 
         private void AddDataToPhoneDetailTable(ModelBuilder modelBuilder)
@@ -268,29 +272,25 @@ namespace PhoneShopApi.Product.Data
             var iPhonesDetail = new List<PhoneDetail>
             {
                 new()
-                {//1
+                {
                     Id = 1,
                     PhoneId = 1
                 },
                 new()
-                {//2
+                {
                     Id = 2,
                     PhoneId = 2
                 },
                 new()
-                {//3
+                {
                     Id = 3,
                     PhoneId = 3
                 },
                 new()
-                {//4
+                {
                     Id = 4,
                     PhoneId = 4
                 },
-            };
-            modelBuilder.Entity<PhoneDetail>().HasData(iPhonesDetail);
-            var samsungsDetail = new List<PhoneDetail>
-            {
                 new()
                 {
                     Id = 5,
@@ -321,10 +321,6 @@ namespace PhoneShopApi.Product.Data
                     Id = 10,
                     PhoneId = 10
                 },
-            };
-            modelBuilder.Entity<PhoneDetail>().HasData(samsungsDetail);
-            var googlesDetail = new List<PhoneDetail>
-            {
                 new()
                 {
                     Id = 11,
@@ -356,16 +352,15 @@ namespace PhoneShopApi.Product.Data
                     PhoneId = 16
                 },
             };
-            modelBuilder.Entity<PhoneDetail>().HasData(googlesDetail);
+            modelBuilder.Entity<PhoneDetail>().HasData(iPhonesDetail);
         }
-
-
 
         private void AddDataToPhoneColorTable(ModelBuilder modelBuilder)
         {
             var hostUrl = "http://14.225.207.131:19001";
-            var iPhone15ProMax256Colors = new List<PhoneColor>
+            var phoneColors = new List<PhoneColor>
             {
+                //iphone 15 promax 
                 new()
                 {
                     Id = 1,
@@ -373,249 +368,228 @@ namespace PhoneShopApi.Product.Data
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_den.webp",
                 },
                 new()
-                {//2
+                {
                     Id = 2,
-                    Name = "Trắng",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_trang.webp",
+                    Name = "Xanh",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_xanh.webp",
                 },
                 new()
-                {//3
+                {
                     Id = 3,
-                    Name = "Xanh",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_xanh.webp",
-                },
-                new()
-                {//4
-                    Id = 4,
-                    Name = "Titan",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_titan.webp",
-                },
-            };
-            modelBuilder.Entity<PhoneColor>().HasData(iPhone15ProMax256Colors);
-            var iPhone15ProMax512Colors = new List<PhoneColor>
-            {
-                new()
-                {//5
-                    Id = 5,
-                    Name = "Đen",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_den.webp",
-                },
-                new()
-                {//6
-                    Id = 6,
-                    Name = "Trắng",
+                    Name = "Trang",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_trang.webp",
                 },
                 new()
-                {//7
-                    Id = 7,
-                    Name = "Xanh",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_xanh.webp",
-                },
-                new()
-                {//8
-                    Id = 8,
+                {
+                    Id = 4,
                     Name = "Titan",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_titan.png",
                 },
-            };
-            modelBuilder.Entity<PhoneColor>().HasData(iPhone15ProMax512Colors);
-            var iPhone15Pro512Colors = new List<PhoneColor>
-            {
+                //iphone 15 pro
                 new()
-                {//9
+                {
+                    Id = 5,
+                    Name = "Đen",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_den.webp",
+                },
+                new()
+                {
+                    Id = 6,
+                    Name = "Trắng",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_trang.webp",
+                },
+                new()
+                {
+                    Id = 7,
+                    Name = "Xanh",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_xanh.webp",
+                },
+                new()
+                {
+                    Id = 8,
+                    Name = "Titan",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_titan.webp",
+                },
+                //iphone 15 plus
+                new()
+                {
                     Id = 9,
                     Name = "Đen",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_den.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_plus_den.webp",
                 },
                 new()
-                {//10
+                {
                     Id = 10,
-                    Name = "Trắng",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_trang.webp",
+                    Name = "Xanh Sky",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_plus_skyblue.webp",
                 },
                 new()
-                {//11
+                {
                     Id = 11,
-                    Name = "Xanh",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_xanh.webp",
+                    Name = "Xanh Mint",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_plus_mint.webp",
                 },
                 new()
-                {//12
+                {
                     Id = 12,
-                    Name = "Titan",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_titan.webp",
+                    Name = "Vàng",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_plus_vang.webp",
                 },
-            };
-            modelBuilder.Entity<PhoneColor>().HasData(iPhone15Pro512Colors);
-            var iPhone15Pro256Colors = new List<PhoneColor>
-            {
                 new()
-                {//13
+                {
                     Id = 13,
-                    Name = "Đen",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_den.webp",
+                    Name = "Hồng",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_plus_hong.webp",
                 },
+                //iphone 14 promax
                 new()
-                {//14
+                {
                     Id = 14,
-                    Name = "Trắng",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_trang.webp",
-                },
-                new()
-                {//15
-                    Id = 15,
-                    Name = "Xanh",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_xanh.webp",
-                },
-                new()
-                {//16
-                    Id = 16,
-                    Name = "Titan",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_titan.webp",
-                },
-            };
-            modelBuilder.Entity<PhoneColor>().HasData(iPhone15Pro256Colors);
-            var iPhone15Pro128Colors = new List<PhoneColor>
-            {
-                new()
-                {//17
-                    Id = 17,
                     Name = "Đen",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_den.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-spaceblack.webp",
                 },
                 new()
-                {//18
-                    Id = 18,
+                {
+                    Id = 15,
                     Name = "Trắng",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_trang.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-silver.webp",
                 },
                 new()
-                {//19
+                {
+                    Id = 16,
+                    Name = "Vàng",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-gold.webp",
+                },
+                new()
+                {
+                    Id = 17,
+                    Name = "Tím",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-deeppurple.webp",
+                },
+                //iphone 14 pro
+                new()
+                {
+                    Id = 18,
+                    Name = "Đen",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-spaceblack.webp",
+                },
+                new()
+                {
                     Id = 19,
-                    Name = "Xanh",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_xanh.webp",
+                    Name = "Trắng",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-silver.webp",
                 },
                 new()
-                {//20
+                {
                     Id = 20,
-                    Name = "Titan",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_titan.webp",
+                    Name = "Vàng",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-gold.webp",
                 },
-            };
-            modelBuilder.Entity<PhoneColor>().HasData(iPhone15Pro128Colors);
-            var iPhone14ProMax256Colors = new List<PhoneColor>
-            {
+                new()
+                {
+                    Id = 21,
+                    Name = "Tím",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-deeppurple.webp",
+                },
+                //
                 new()
                 {//21
-                    Id = 21,
+                    Id = 22,
                     Name = "Đen",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-spaceblack.webp",
                 },
                 new()
                 {//22
-                    Id = 22,
+                    Id = 23,
                     Name = "Bạc",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-silver.webp",
                 },
                 new()
                 {//23
-                    Id = 23,
+                    Id = 24,
                     Name = "Vàng",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-gold.webp",
                 },
                 new()
                 {//24
-                    Id = 24,
+                    Id = 25,
                     Name = "Tím",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-deeppurple.webp",
                 },
-            };
-            modelBuilder.Entity<PhoneColor>().HasData(iPhone14ProMax256Colors);
-            var iPhone14Pro256Colors = new List<PhoneColor>
-            {
                 new()
                 {//25
-                    Id = 25,
+                    Id = 26,
                     Name = "Đen",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-spaceblack.webp",
                 },
                 new()
                 {//26
-                    Id = 26,
+                    Id = 27,
                     Name = "Bạc",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-silver.webp",
                 },
                 new()
                 {//27
-                    Id = 27,
+                    Id = 28,
                     Name = "Vàng",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-gold.webp",
                 },
                 new()
                 {//28
-                    Id = 28,
+                    Id = 29,
                     Name = "Tím",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-deeppurple.webp",
                 },
-            };
-            modelBuilder.Entity<PhoneColor>().HasData(iPhone14Pro256Colors);
-            var s24 = new List<PhoneColor>
-            {
                 new()
                 {
-                    Id = 29,
+                    Id = 30,
                     Name = "Bạc",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24_bac.webp",
                 },
                 new()
                 {//2
-                    Id = 30,
+                    Id = 31,
                     Name = "Đen",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24_den.webp",
                 },
                 new()
                 {//3
-                    Id = 31,
+                    Id = 32,
                     Name = "Tím",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24_tim.webp",
                 },
                 new()
                 {//4
-                    Id = 32,
+                    Id = 33,
                     Name = "Vàng",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24_vang.webp",
                 },
-            };
-            modelBuilder.Entity<PhoneColor>().HasData(s24);
-            var s24u = new List<PhoneColor>
-            {
                 new()
                 {
-                    Id = 33,
+                    Id = 34,
                     Name = "Xám",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24u_xam.webp",
                 },
                 new()
                 {//2
-                    Id = 34,
+                    Id = 35,
                     Name = "Đen",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24u_den.webp",
                 },
                 new()
                 {//3
-                    Id = 35,
+                    Id = 36,
                     Name = "Tím",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24u_tim.webp",
                 },
                 new()
                 {//4
-                    Id = 36,
+                    Id = 37,
                     Name = "Vàng",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24u_vang.webp",
                 },
             };
-            modelBuilder.Entity<PhoneColor>().HasData(s24u);
+            modelBuilder.Entity<PhoneColor>().HasData(phoneColors);
         }
 
 
@@ -624,22 +598,23 @@ namespace PhoneShopApi.Product.Data
         {
             var iPhone15ProMax256Option = new List<PhoneOption>
             {
+                //15 promax 256 
                 new()
                 {
                     Id = 1,
                     PhoneId = 1,
-                    BuiltInStorageId = 2,
                     PhoneColorId = 1,
-                    Price = 30990000,
+                    BuiltInStorageId = 2,
+                    Price = 26490000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 2,
                     PhoneId = 1,
-                    BuiltInStorageId = 2,
                     PhoneColorId = 2,
-                    Price = 30990000,
+                    BuiltInStorageId = 2,
+                    Price = 26490000,
                     Quantity = 100
                 },
                 new()
@@ -648,7 +623,7 @@ namespace PhoneShopApi.Product.Data
                     PhoneId = 1,
                     BuiltInStorageId = 2,
                     PhoneColorId = 3,
-                    Price = 30990000,
+                    Price = 26490000,
                     Quantity = 100
                 },
                 new()
@@ -657,19 +632,16 @@ namespace PhoneShopApi.Product.Data
                     PhoneId = 1,
                     BuiltInStorageId = 2,
                     PhoneColorId = 4,
-                    Price = 30990000,
+                    Price = 26490000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(iPhone15ProMax256Option);
-            var iPhone15ProMax512Option = new List<PhoneOption>
-            {
+                //15 promax 512
                 new()
                 {
                     Id = 5,
                     PhoneId = 1,
                     BuiltInStorageId = 3,
-                    PhoneColorId = 5,
+                    PhoneColorId = 1,
                     Price = 30990000,
                     Quantity = 100
                 },
@@ -678,7 +650,7 @@ namespace PhoneShopApi.Product.Data
                     Id = 6,
                     PhoneId = 1,
                     BuiltInStorageId = 3,
-                    PhoneColorId = 6,
+                    PhoneColorId = 2,
                     Price = 30990000,
                     Quantity = 100
                 },
@@ -687,7 +659,7 @@ namespace PhoneShopApi.Product.Data
                     Id = 7,
                     PhoneId = 1,
                     BuiltInStorageId = 3,
-                    PhoneColorId = 7,
+                    PhoneColorId = 3,
                     Price = 30990000,
                     Quantity = 100
                 },
@@ -696,21 +668,18 @@ namespace PhoneShopApi.Product.Data
                     Id = 8,
                     PhoneId = 1,
                     BuiltInStorageId = 3,
-                    PhoneColorId = 8,
+                    PhoneColorId = 4,
                     Price = 30990000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(iPhone15ProMax512Option);
-            var iPhone15Pro128Option = new List<PhoneOption>
-            {
+                // 15 pro 128
                 new()
                 {
                     Id = 9,
                     PhoneId = 2,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 9,
-                    Price = 30990000,
+                    PhoneColorId = 5,
+                    Price = 21990000,
                     Quantity = 100
                 },
                 new()
@@ -718,8 +687,8 @@ namespace PhoneShopApi.Product.Data
                     Id = 10,
                     PhoneId = 2,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 10,
-                    Price = 30990000,
+                    PhoneColorId = 6,
+                    Price = 21990000,
                     Quantity = 100
                 },
                 new()
@@ -727,8 +696,8 @@ namespace PhoneShopApi.Product.Data
                     Id = 11,
                     PhoneId = 2,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 11,
-                    Price = 30990000,
+                    PhoneColorId = 7,
+                    Price = 21990000,
                     Quantity = 100
                 },
                 new()
@@ -736,21 +705,18 @@ namespace PhoneShopApi.Product.Data
                     Id = 12,
                     PhoneId = 2,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 12,
-                    Price = 30990000,
+                    PhoneColorId = 8,
+                    Price = 21990000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(iPhone15Pro128Option);
-            var iPhone15Pro256Option = new List<PhoneOption>
-            {
+                //15 pro 256
                 new()
                 {
                     Id = 13,
                     PhoneId = 2,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 13,
-                    Price = 30990000,
+                    PhoneColorId = 5,
+                    Price = 23490000,
                     Quantity = 100
                 },
                 new()
@@ -758,8 +724,8 @@ namespace PhoneShopApi.Product.Data
                     Id = 14,
                     PhoneId = 2,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 14,
-                    Price = 30990000,
+                    PhoneColorId = 6,
+                    Price = 23490000,
                     Quantity = 100
                 },
                 new()
@@ -767,8 +733,8 @@ namespace PhoneShopApi.Product.Data
                     Id = 15,
                     PhoneId = 2,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 15,
-                    Price = 30990000,
+                    PhoneColorId = 7,
+                    Price = 23490000,
                     Quantity = 100
                 },
                 new()
@@ -776,61 +742,55 @@ namespace PhoneShopApi.Product.Data
                     Id = 16,
                     PhoneId = 2,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 16,
-                    Price = 30990000,
+                    PhoneColorId = 8,
+                    Price = 23490000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(iPhone15Pro256Option);
-            var iPhone14ProMax256Option = new List<PhoneOption>
-            {
+                //15 pro 512
                 new()
                 {
                     Id = 17,
-                    PhoneId = 3,
-                    BuiltInStorageId = 2,
-                    PhoneColorId = 21,
-                    Price = 30990000,
+                    PhoneId = 2,
+                    BuiltInStorageId = 3,
+                    PhoneColorId = 5,
+                    Price = 26990000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 18,
-                    PhoneId = 3,
-                    BuiltInStorageId = 2,
-                    PhoneColorId = 22,
-                    Price = 30990000,
+                    PhoneId = 2,
+                    BuiltInStorageId = 3,
+                    PhoneColorId = 6,
+                    Price = 26990000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 19,
-                    PhoneId = 3,
-                    BuiltInStorageId = 2,
-                    PhoneColorId = 23,
-                    Price = 30990000,
+                    PhoneId = 2,
+                    BuiltInStorageId = 3,
+                    PhoneColorId = 7,
+                    Price = 26990000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 20,
-                    PhoneId = 3,
-                    BuiltInStorageId = 2,
-                    PhoneColorId = 24,
-                    Price = 30990000,
+                    PhoneId = 2,
+                    BuiltInStorageId = 3,
+                    PhoneColorId = 8,
+                    Price = 26990000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(iPhone14ProMax256Option);
-            var iPhone14ProMax128Option = new List<PhoneOption>
-            {
+                //iPhone 15 plus 128
                 new()
                 {
                     Id = 21,
                     PhoneId = 3,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 21,
-                    Price = 30990000,
+                    PhoneColorId = 9,
+                    Price = 21490000,
                     Quantity = 100
                 },
                 new()
@@ -838,8 +798,8 @@ namespace PhoneShopApi.Product.Data
                     Id = 22,
                     PhoneId = 3,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 22,
-                    Price = 30990000,
+                    PhoneColorId = 10,
+                    Price = 22490000,
                     Quantity = 100
                 },
                 new()
@@ -847,8 +807,8 @@ namespace PhoneShopApi.Product.Data
                     Id = 23,
                     PhoneId = 3,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 23,
-                    Price = 30990000,
+                    PhoneColorId = 11,
+                    Price = 22490000,
                     Quantity = 100
                 },
                 new()
@@ -856,79 +816,73 @@ namespace PhoneShopApi.Product.Data
                     Id = 24,
                     PhoneId = 3,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 24,
-                    Price = 30990000,
+                    PhoneColorId = 12,
+                    Price = 22490000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(iPhone14ProMax128Option);
-            var iPhone14Pro256Option = new List<PhoneOption>
-            {
                 new()
                 {
                     Id = 25,
-                    PhoneId = 4,
-                    BuiltInStorageId = 2,
-                    PhoneColorId = 21,
-                    Price = 30990000,
+                    PhoneId = 3,
+                    BuiltInStorageId = 1,
+                    PhoneColorId = 13,
+                    Price = 22990000,
                     Quantity = 100
                 },
+                //iphone 15 plus 256
                 new()
                 {
                     Id = 26,
-                    PhoneId = 4,
+                    PhoneId = 3,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 22,
-                    Price = 30990000,
+                    PhoneColorId = 9,
+                    Price = 23990000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 27,
-                    PhoneId = 4,
+                    PhoneId = 3,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 23,
-                    Price = 30990000,
+                    PhoneColorId = 10,
+                    Price = 23690000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 28,
-                    PhoneId = 4,
+                    PhoneId = 3,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 24,
-                    Price = 30990000,
+                    PhoneColorId = 11,
+                    Price = 23990000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(iPhone14Pro256Option);
-            var iPhone14Pro128Option = new List<PhoneOption>
-            {
                 new()
                 {
                     Id = 29,
-                    PhoneId = 4,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 21,
-                    Price = 30990000,
+                    PhoneId = 3,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 12,
+                    Price = 24290000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 30,
-                    PhoneId = 4,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 22,
-                    Price = 30990000,
+                    PhoneId = 3,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 13,
+                    Price = 25490000,
                     Quantity = 100
                 },
+                //iphone 15 plus 512
                 new()
                 {
                     Id = 31,
-                    PhoneId = 4,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 23,
-                    Price = 30990000,
+                    PhoneId = 3,
+                    BuiltInStorageId = 3,
+                    PhoneColorId = 9,
+                    Price = 24990000,
                     Quantity = 100
                 },
                 new()
@@ -936,25 +890,17 @@ namespace PhoneShopApi.Product.Data
                     Id = 32,
                     PhoneId = 4,
                     BuiltInStorageId = 1,
-                    PhoneColorId = 24,
-                    Price = 30990000,
+                    PhoneColorId = 10,
+                    Price = 24990000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(iPhone14Pro128Option);
-        }
-
-        private void AddDataSamsungToPhoneOptionTable(ModelBuilder modelBuilder)
-        {
-            var GalaxyS24256 = new List<PhoneOption>
-            {
                 new()
                 {
                     Id = 33,
                     PhoneId = 5,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 29,
-                    Price = 30990000,
+                    PhoneColorId = 11,
+                    Price = 24990000,
                     Quantity = 100
                 },
                 new()
@@ -962,99 +908,94 @@ namespace PhoneShopApi.Product.Data
                     Id = 34,
                     PhoneId = 5,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 30,
-                    Price = 30990000,
+                    PhoneColorId = 12,
+                    Price = 24990000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 35,
-                    PhoneId = 5,
-                    BuiltInStorageId = 2,
-                    PhoneColorId = 31,
-                    Price = 30990000,
+                    PhoneId = 3,
+                    BuiltInStorageId = 3,
+                    PhoneColorId = 13,
+                    Price = 25490000,
                     Quantity = 100
                 },
+                // iphone 14 pro max 256
                 new()
                 {
                     Id = 36,
-                    PhoneId = 5,
+                    PhoneId = 4,
                     BuiltInStorageId = 2,
-                    PhoneColorId = 32,
-                    Price = 30990000,
+                    PhoneColorId = 14,
+                    Price = 25990000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(GalaxyS24256);
-            var GalaxyS24128 = new List<PhoneOption>
-            {
                 new()
                 {
                     Id = 37,
-                    PhoneId = 5,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 29,
-                    Price = 30990000,
+                    PhoneId = 4,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 15,
+                    Price = 26490000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 38,
-                    PhoneId = 5,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 28,
-                    Price = 30990000,
+                    PhoneId = 4,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 16,
+                    Price = 25990000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 39,
-                    PhoneId = 5,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 27,
-                    Price = 30990000,
+                    PhoneId = 4,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 17,
+                    Price = 25990000,
                     Quantity = 100
                 },
+                //iphone 14 pro 256
                 new()
                 {
                     Id = 40,
                     PhoneId = 5,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 26,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 18,
                     Price = 30990000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(GalaxyS24128);
-            var GalaxyS24Ultra = new List<PhoneOption>
-            {
                 new()
                 {
                     Id = 41,
-                    PhoneId = 6,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 33,
+                    PhoneId = 5,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 19,
                     Price = 30990000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 42,
-                    PhoneId = 6,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 34,
+                    PhoneId = 5,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 20,
                     Price = 30990000,
                     Quantity = 100
                 },
                 new()
                 {
                     Id = 43,
-                    PhoneId = 6,
-                    BuiltInStorageId = 1,
-                    PhoneColorId = 35,
+                    PhoneId = 5,
+                    BuiltInStorageId = 2,
+                    PhoneColorId = 21,
                     Price = 30990000,
                     Quantity = 100
                 },
+                //
                 new()
                 {
                     Id = 44,
@@ -1064,10 +1005,6 @@ namespace PhoneShopApi.Product.Data
                     Price = 30990000,
                     Quantity = 100
                 },
-            };
-            modelBuilder.Entity<PhoneOption>().HasData(GalaxyS24Ultra);
-            var GalaxyS24Plus = new List<PhoneOption>
-            {
                 new()
                 {
                     Id = 45,
@@ -1105,8 +1042,7 @@ namespace PhoneShopApi.Product.Data
                     Quantity = 100
                 },
             };
-            modelBuilder.Entity<PhoneOption>().HasData(GalaxyS24Plus);
-
+            modelBuilder.Entity<PhoneOption>().HasData(iPhone15ProMax256Option);
         }
 
         private void AddDataToPaymentTable(ModelBuilder modelBuilder)
@@ -1180,7 +1116,6 @@ namespace PhoneShopApi.Product.Data
             AddDataToBuiltInStorageTable(modelBuilder);
             AddDataToPhoneColorTable(modelBuilder);
             AddDataToPhoneOptionTable(modelBuilder);
-            AddDataSamsungToPhoneOptionTable(modelBuilder);
             AddDataToPaymentTable(modelBuilder);
         }
     }

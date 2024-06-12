@@ -118,7 +118,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Cart/cart/{cartId}/phoneOption/{phoneOptionId}",
-      "UpstreamHttpMethod": [ "DELETE" ]
+      "UpstreamHttpMethod": [ "DELETE", "POST" ]
     },
     /***Order***/
     //Get all user's orders
