@@ -55,7 +55,7 @@ namespace PhoneShopApi.Product.Controllers
             return Ok(phoneColor.ToPhoneColorDto());
         }
 
-        private async Task<string> WriteFile(IFormFile file)
+        private static async Task<string> WriteFile(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
@@ -69,7 +69,7 @@ namespace PhoneShopApi.Product.Controllers
             {
                 filename = file.FileName;
 
-                exactpath = Path.Combine("root", "home", "Images", filename);
+                exactpath = Path.Combine("home/Images", filename);
 
                 using (var stream = new FileStream(exactpath, FileMode.Create))
                 {
