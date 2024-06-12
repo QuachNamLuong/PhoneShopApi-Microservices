@@ -58,7 +58,7 @@ namespace PhoneShopApi.Controllers
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
-                return Ok("Success.");
+                return Ok("Success");
             }
         }
 
