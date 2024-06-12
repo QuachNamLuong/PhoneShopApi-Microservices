@@ -184,6 +184,7 @@ namespace PhoneShopApi.Ordering.Controllers
                     return BadRequest("status code invalid");
 
             }
+            await _context.SaveChangesAsync();
 
             return Ok("Success");
         }
