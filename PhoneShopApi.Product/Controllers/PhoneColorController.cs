@@ -42,13 +42,13 @@ namespace PhoneShopApi.Product.Controllers
 
         [HttpPost]
         [Route("UpdateImage/{phoneColorId:int}")]
-        public async Task<IActionResult> UploadFile(IFormFile file, int phoneColorId, CancellationToken cancellationToken)
+        public async Task<IActionResult> UploadFile(IFormFile file, int phoneColorId)
         {
             var phoneColor = _context.PhoneColors.Find(phoneColorId);
             if (phoneColor == null) return NotFound("Phone color not found");
 
             var imageUrl = await WriteFile(file);
-            string HostUrl = $"{Request.Scheme}://{Request.Host}/";
+            string HostUrl = "http://14.225.207.131/";
             phoneColor.ImageUrl = HostUrl + imageUrl;
 
             await _context.SaveChangesAsync();
@@ -69,7 +69,7 @@ namespace PhoneShopApi.Product.Controllers
             {
                 filename = file.FileName;
 
-                exactpath = Path.Combine(_environment.WebRootPath, "Uploads", "PhoneImages", filename);
+                exactpath = Path.Combine("root", "home", "Images", filename);
 
                 using (var stream = new FileStream(exactpath, FileMode.Create))
                 {
@@ -81,7 +81,7 @@ namespace PhoneShopApi.Product.Controllers
             {
             }
 
-            return Path.Combine("Uploads", "PhoneImages", filename); // Return relative path
+            return filename; // Return relative path
         }
 
         [HttpPost]
