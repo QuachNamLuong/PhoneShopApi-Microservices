@@ -65,7 +65,7 @@ namespace PhoneShopApi.Product.Controllers
             return Ok(new { phone, storages });
         }
 
-        [HttpGet("{phoneId:int}&{builtInStorageId:int}")]
+        [HttpGet("{phoneId:int}/{builtInStorageId:int}")]
         public async Task<IActionResult> GetPhoneColors(int phoneId, int builtInStorageId)
         {
             var phoneColors = await _context.PhoneOptions

@@ -214,7 +214,7 @@
     },
     //Get phone' color with (built in storage Id) and (phone Id)
     {
-      "DownstreamPathTemplate": "/api/Phone/{phoneId}&{builtInStorageId}",
+      "DownstreamPathTemplate": "/api/Phone/{phoneId}/{builtInStorageId}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -222,7 +222,7 @@
           "Port": 8080
         }
       ],
-      "UpstreamPathTemplate": "/api/Phone/{phoneId}&{builtInStorageId}",
+      "UpstreamPathTemplate": "/api/Phone/{phoneId}/{builtInStorageId}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     //Create new phone
