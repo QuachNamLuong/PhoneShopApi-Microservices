@@ -416,7 +416,7 @@ namespace PhoneShopApi.Product.Data
                 {//8
                     Id = 8,
                     Name = "Titan",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_titan.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_prm_titan.png",
                 },
             };
             modelBuilder.Entity<PhoneColor>().HasData(iPhone15ProMax512Colors);
