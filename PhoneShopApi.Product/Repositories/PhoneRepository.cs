@@ -235,11 +235,7 @@ namespace PhoneShopApi.Product.Repositories
                     }
 
                 }
-
-                if (newPhoneItem.Phones.Count > 0)
-                {
-                    listPhones.Add(newPhoneItem);
-                }
+                listPhones.Add(newPhoneItem);
             }
             return listPhones;
         }

@@ -82,7 +82,7 @@ namespace PhoneShopApi.Controllers
                 await _context.SaveChangesAsync();
                 var builtInStorage = await _context.BuiltInStorages
                     .Where(b => b.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity
-                    && b.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit))
+                    && b.Unit.ToLower().Equals(createNewPhoneOptionRequest.BuiltInStorageUnit.ToLower()))
                     .FirstOrDefaultAsync();
                 if (builtInStorage == null)
                 {
