@@ -138,12 +138,12 @@ namespace PhoneShopApi.Ordering.Controllers
             if (orderItem != null)
             {
                 orderItem.Quantity += createOrderItemRequestDto.Quantity;
-                orderItem.Price += phoneOption.Price * createOrderItemRequestDto.Quantity;
+                orderItem.Price = phoneOption.Price;
             }
             else
             {
                 var newOrderItem = createOrderItemRequestDto.ToOrderItemFromCreateOrderItemRequestDto();
-                newOrderItem.Price = phoneOption.Price * createOrderItemRequestDto.Quantity;
+                newOrderItem.Price = phoneOption.Price;
 
                 order.OrderItems.Add(newOrderItem);
             }

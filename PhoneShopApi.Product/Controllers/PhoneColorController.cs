@@ -59,6 +59,7 @@ namespace PhoneShopApi.Product.Controllers
             return Ok(phoneColor.ToPhoneColorDto());
         }
 
+        [NonAction]
         private async Task<string> WriteFile(IFormFile file)
         {
             if (file == null || file.Length == 0)
