@@ -40,7 +40,7 @@ namespace PhoneShopApi.Controllers
             {
                 var phone = await _context.Phones.FirstOrDefaultAsync(p => p.Id == phoneId);
                 if (phone == null) return NotFound("phone not found.");
-
+                phone.IsSelling = false;
                 var phoneOptions = await _context.PhoneOptions
                 .Where(po => po.PhoneId == phoneId)
                 .ToListAsync();
