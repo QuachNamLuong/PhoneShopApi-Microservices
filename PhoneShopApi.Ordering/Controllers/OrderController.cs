@@ -153,5 +153,40 @@ namespace PhoneShopApi.Ordering.Controllers
             return Ok("Success");
         }
 
+        [HttpPut]
+        [Route("UpdateOrderStatus/{orderId:int}/status/{statusCode:int}")]
+        public async Task<IActionResult> UpdateOrderStatus(
+            int orderId, int statusCode)
+        {
+            if (!ModelState.IsValid) return BadRequest("Cannot create order item now.");
+
+            var order = await _context.Orders
+                .Where(o => o.Id == orderId)
+                .FirstOrDefaultAsync();
+
+            if (order == null) return NotFound("order not found");
+
+            switch (statusCode)
+            {
+                case 0:
+                    order.OrderStatus = "Đang chuẩn bị hàng.";
+                    break;
+                case 1:
+                    order.OrderStatus = "Đang giao.";
+                    break;
+                case 2:
+                    order.OrderStatus = "Thành công.";
+                    break;
+                case 3:
+                    order.OrderStatus = "Thất bại.";
+                    break;
+                default:
+                    return BadRequest("status code invalid");
+
+            }
+
+            return Ok("Success");
+        }
+
     }
 }

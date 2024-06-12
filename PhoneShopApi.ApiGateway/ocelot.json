@@ -160,6 +160,18 @@
       "UpstreamPathTemplate": "/api/Order/AddOrderItem",
       "UpstreamHttpMethod": [ "POST" ]
     },
+    {
+      "DownstreamPathTemplate": "/api/Order/UpdateOrderStatus/{orderId}/status/{statusCode}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Order/UpdateOrderStatus/{orderId}/status/{statusCode}",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
     //Get all phone follow brand
     {
       "DownstreamPathTemplate": "/api/Phone/AllPhonesSellingFollowBrand",
