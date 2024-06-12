@@ -30,11 +30,11 @@ services:
   phoneshopapi.product:
     container_name: phone-shop-api-product
     image: ${DOCKER_REGISTRY-}phone-shop-api.product
+    volumes:
+      - ./PhoneShopApi.Product/wwwroot/Uploads/PhoneImages:/PhoneShopApi.Product/wwwroot/Uploads/PhoneImages
     build:
       context: .
       dockerfile: PhoneShopApi.Product/Dockerfile
-    volumes:
-      - ./wwwroot:/app/wwwroot
     ports:
       - "19001:8080"
     depends_on:
