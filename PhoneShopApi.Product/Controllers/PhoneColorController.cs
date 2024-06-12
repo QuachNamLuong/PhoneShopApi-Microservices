@@ -76,7 +76,7 @@ namespace PhoneShopApi.Product.Controllers
             }
             catch (Exception ex )
             {
-                return $"{Request.Scheme}://{Request.Host}/Uploads/NotFound.jpg";
+                //return $"{Request.Scheme}://{Request.Host}/Uploads/NotFound.jpg";
             }
                         
             return Path.Combine("Uploads", "PhoneImages", filename);

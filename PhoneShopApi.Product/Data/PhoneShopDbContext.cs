@@ -331,6 +331,11 @@ namespace PhoneShopApi.Product.Data
                     Id = 16,
                     PhoneId = 16
                 },
+                new()
+                {
+                    Id = 17,
+                    PhoneId = 17
+                },
             };
             modelBuilder.Entity<PhoneDetail>().HasData(iPhonesDetail);
         }
@@ -471,55 +476,57 @@ namespace PhoneShopApi.Product.Data
                     Name = "Tím",
                     ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-deeppurple.webp",
                 },
-                //
+                //Samsung s24
                 new()
-                {//21
+                {
                     Id = 22,
                     Name = "Đen",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-spaceblack.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24_den.webp",
                 },
                 new()
-                {//22
+                {
                     Id = 23,
                     Name = "Bạc",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-silver.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24_bac.webp",
                 },
                 new()
-                {//23
+                {
                     Id = 24,
                     Name = "Vàng",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-gold.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24_vang.webp",
                 },
                 new()
-                {//24
+                {
                     Id = 25,
                     Name = "Tím",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-max-deeppurple.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24_tim.webp",
                 },
+                //samsung s24 ultra
                 new()
-                {//25
+                {
                     Id = 26,
                     Name = "Đen",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-spaceblack.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24u_den.webp",
                 },
                 new()
-                {//26
+                {
                     Id = 27,
-                    Name = "Bạc",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-silver.webp",
+                    Name = "Tím",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24u_tim.webp",
                 },
                 new()
-                {//27
+                {
                     Id = 28,
                     Name = "Vàng",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-gold.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24u_vang.webp",
                 },
                 new()
-                {//28
+                {
                     Id = 29,
-                    Name = "Tím",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/iphone-14-pro-deeppurple.webp",
+                    Name = "Xám",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/s24u_xam.webp",
                 },
+                //
                 new()
                 {
                     Id = 30,
