@@ -109,6 +109,7 @@ namespace PhoneShopApi.Product.Repositories
                     .ThenInclude(po => po.PhoneColor)
                     .Include(po => po.PhoneOptions)
                     .ThenInclude(po => po.BuiltInStorage)
+                    .Where(p => p.PhoneOptions.Count > 0)
                     .AsQueryable();
 
                 if (!string.IsNullOrWhiteSpace(query.Name))
