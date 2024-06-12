@@ -59,29 +59,26 @@ namespace PhoneShopApi.Product.Controllers
         {
             if (file == null || file.Length == 0)
             {
-                throw new ArgumentNullException(nameof(file), "The uploaded file cannot be null or empty.");
+                throw new ArgumentNullException(
+                    nameof(file),
+                    "The uploaded file cannot be null or empty.");
             }
 
-            string filename = "";
-            string exactpath = "";
+            string filename = file.FileName;
 
-            try
+            string exactpath = Path.Combine("home/Images", filename);
+
+            if (!Directory.Exists(exactpath))
             {
-                filename = file.FileName;
-
-                exactpath = Path.Combine("home/Images", filename);
-
-                using (var stream = new FileStream(exactpath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                    stream.Close();
-                }
+                Directory.CreateDirectory(exactpath);
             }
-            catch (Exception ex)
+
+            using (var stream = new FileStream(exactpath, FileMode.Create))
             {
+                await file.CopyToAsync(stream);
             }
 
-            return filename; // Return relative path
+            return filename;
         }
 
         [HttpPost]
