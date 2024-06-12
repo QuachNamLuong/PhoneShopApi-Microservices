@@ -279,6 +279,18 @@
       "UpstreamPathTemplate": "/api/PhoneOption/CreateNewPhoneOption/{phoneId}",
       "UpstreamHttpMethod": [ "POST" ]
     },
+    {
+      "DownstreamPathTemplate": "/api/PhoneOption/ResetPhoneOption/{phoneId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.product",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/PhoneOption/ResetPhoneOption/{phoneId}",
+      "UpstreamHttpMethod": [ "DELETE" ]
+    },
     //Update phone option
     {
       "DownstreamPathTemplate": "/api/PhoneOption/UpdatePhoneOption/Phone/{phoneId}/PhoneColor/{phoneColorId}/BuiltInStorage/{builtInStorageId}",
