@@ -31,7 +31,7 @@ services:
     container_name: phone-shop-api-product
     image: ${DOCKER_REGISTRY-}phone-shop-api.product
     volumes:
-      - ./PhoneShopApi.Product/wwwroot/Uploads/PhoneImages:/PhoneShopApi.Product/wwwroot/Uploads/PhoneImages
+      - myapp:/PhoneShopApi.Product/wwwroot/Uploads/PhoneImages
     build:
       context: .
       dockerfile: PhoneShopApi.Product/Dockerfile
@@ -86,6 +86,9 @@ services:
       - DB_SA_PASSWORD=TGmydb123456
     networks:
       - phoneshopapi
+
+volumes:
+  myapp:
 
 
 
