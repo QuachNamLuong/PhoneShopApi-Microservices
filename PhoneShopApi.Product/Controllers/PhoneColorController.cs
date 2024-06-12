@@ -48,8 +48,7 @@ namespace PhoneShopApi.Product.Controllers
             if (phoneColor == null) return NotFound("Phone color not found");
 
             var imageUrl = await WriteFile(file);
-            string HostUrl = $"{Request.Scheme}://{Request.Host}/";
-            phoneColor.ImageUrl = HostUrl + imageUrl;
+            phoneColor.ImageUrl = $"http://14.225.207.131:19001/{imageUrl}";
 
             await _context.SaveChangesAsync();
             return Ok(phoneColor.ToPhoneColorDto());
@@ -88,7 +87,7 @@ namespace PhoneShopApi.Product.Controllers
             if (!ModelState.IsValid) return BadRequest();
 
             var newPhoneColor = createPhoneColorRequestDto.ToPhoneColorFromCreatePhoneColorRequestDto();
-            newPhoneColor.ImageUrl = $"{Request.Scheme}://{Request.Host}/Uploads/PhoneImages/NotFound.jpg";
+            newPhoneColor.ImageUrl = "http://14.225.207.131:19001/Uploads/NotFound.jpg";
             await _phoneColorRepo.CreateAsync(newPhoneColor);
 
             return CreatedAtAction(
