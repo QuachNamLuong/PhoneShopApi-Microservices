@@ -30,8 +30,6 @@ services:
   phoneshopapi.product:
     container_name: phone-shop-api-product
     image: ${DOCKER_REGISTRY-}phone-shop-api.product
-    volumes:
-      - wwwroot_data:../PhoneShopApi.Product/wwwroot/Uploads/PhoneImages
     build:
       context: .
       dockerfile: PhoneShopApi.Product/Dockerfile
@@ -87,7 +85,5 @@ services:
     networks:
       - phoneshopapi
 
-volumes:
-  wwwroot_data:
 
 
