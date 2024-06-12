@@ -84,7 +84,6 @@ builder.Services.AddDbContext<PhoneShopDbContext>(options =>
 });
 
 
-
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
     options.Password.RequiredLength = 6;

@@ -31,7 +31,7 @@ services:
     container_name: phone-shop-api-product
     image: ${DOCKER_REGISTRY-}phone-shop-api.product
     volumes:
-      - /wwwroot/Uploads/PhoneImages:/PhoneShopApi.Product/wwwroot/Uploads/PhoneImages
+      - ./PhoneShopApi.Product/wwwroot/Uploads/PhoneImages:/PhoneShopApi.Product/wwwroot/Uploads/PhoneImages
     build:
       context: .
       dockerfile: PhoneShopApi.Product/Dockerfile
