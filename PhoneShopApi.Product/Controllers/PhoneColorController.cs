@@ -19,10 +19,6 @@ namespace PhoneShopApi.Product.Controllers
         private readonly PhoneShopDbContext _context = context;
         private readonly IPhoneColorRepository _phoneColorRepo = phoneColorRepo;
         private readonly IWebHostEnvironment _environment = environment;
-        private static string apiKey = "AIzaSyALimWtWPLLhZ5pAlvhRtcNGqCY5XvyG68";
-        private static string bucket = "phoneshop-9f868.appspot.com";
-        private static string AuthEmail = "admin@email.com";
-        private static string AuthPassword = "TGmyadmin123";
 
         [HttpGet]
         [Route("GetAllPhoneColor")]
