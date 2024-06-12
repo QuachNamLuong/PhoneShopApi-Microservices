@@ -1098,11 +1098,11 @@ namespace PhoneShopApi.Product.Data
 
             AddDataToRoleTable(modelBuilder);
             AddDataToBrandTable(modelBuilder);
-            //AddDataToPhoneTable(modelBuilder);
-            //AddDataToPhoneDetailTable(modelBuilder);
+            AddDataToPhoneTable(modelBuilder);
+            AddDataToPhoneDetailTable(modelBuilder);
             AddDataToBuiltInStorageTable(modelBuilder);
-            //AddDataToPhoneColorTable(modelBuilder);
-            //AddDataToPhoneOptionTable(modelBuilder);
+            AddDataToPhoneColorTable(modelBuilder);
+            AddDataToPhoneOptionTable(modelBuilder);
             AddDataToPaymentTable(modelBuilder);
         }
     }
