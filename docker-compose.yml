@@ -9,6 +9,8 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     ports:
       - 1433:1433
+    volumes:
+      - my-db:/var/lib/mssql
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=TGmydb123456
@@ -31,7 +33,9 @@ services:
     container_name: phone-shop-api-product
     image: ${DOCKER_REGISTRY-}phone-shop-api.product
     volumes:
-      - ./PhoneShopApi.Product/wwwroot/Uploads/PhoneImages:/PhoneShopApi.Product/wwwroot/Uploads/PhoneImages
+      - type: bind
+        source: ./PhoneShopApi.Product/wwwroot:/PhoneShopApi.Product/wwwroot
+        target
     build:
       context: .
       dockerfile: PhoneShopApi.Product/Dockerfile
@@ -87,5 +91,9 @@ services:
     networks:
       - phoneshopapi
 
+volumes:
+  my-db:
+    external: true
+  
 
 
