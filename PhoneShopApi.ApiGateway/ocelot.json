@@ -54,7 +54,7 @@
       "UpstreamPathTemplate": "/api/BuiltInStorage/GetAllbuiltInStorage",
       "UpstreamHttpMethod": [ "GET" ]
     },
-    //Get, Pu, Delete built in storage
+    //Get, Put, Delete built in storage
     {
       "DownstreamPathTemplate": "/api/BuiltInStorage/{id}",
       "DownstreamScheme": "http",

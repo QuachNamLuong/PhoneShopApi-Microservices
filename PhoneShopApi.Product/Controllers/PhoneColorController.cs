@@ -64,7 +64,7 @@ namespace PhoneShopApi.Product.Controllers
                     nameof(file),
                     "The uploaded file cannot be null or empty.");
             }
-            var filename = Guid.NewGuid().ToString() + file.FileName;
+            var filename = file.FileName;
 
             try
             {
@@ -76,7 +76,7 @@ namespace PhoneShopApi.Product.Controllers
             }
             catch (Exception ex )
             {
-                //return $"{Request.Scheme}://{Request.Host}/Uploads/PhoneImages/NotFound.jpg";
+                return $"{Request.Scheme}://{Request.Host}/Uploads/NotFound.jpg";
             }
                         
             return Path.Combine("Uploads", "PhoneImages", filename);
