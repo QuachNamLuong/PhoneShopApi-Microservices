@@ -10,7 +10,6 @@ namespace PhoneShopApi.Auth.Dto.User
         [Required]
         public string Address { get; set; } = string.Empty;
         [Required]
-        [Phone]
         public string PhoneNumber { get; set; } = string.Empty;
         [Required]
         public string FirstName { get; set; } = string.Empty;
