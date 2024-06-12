@@ -30,7 +30,6 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
         });
 });
-builder.Services.AddSingleton<IServiceCollection>();
 
 
 

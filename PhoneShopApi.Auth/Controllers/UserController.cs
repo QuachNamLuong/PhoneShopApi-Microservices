@@ -5,6 +5,7 @@ using PhoneShopApi.Auth.Models;
 using PhoneShopApi.Auth.Interfaces;
 using PhoneShopApi.Auth.Dto.User;
 using PhoneShopApi.Auth.Data;
+using System.Reflection.Metadata.Ecma335;
 
 namespace PhoneShopApi.Auth.Controllers
 {
@@ -87,5 +88,39 @@ namespace PhoneShopApi.Auth.Controllers
                 PhoneNumber = user.PhoneNumber
             });
         }
+
+        [HttpPut]
+        [Route("UpdateUserInfo/user/{userId}")]
+        public  async Task<IActionResult> UpdateUserInfo(
+            [FromRoute] string userId,
+            [FromBody] UpdateUserRequestDto updateUserRequestDto)
+        {
+            if (!ModelState.IsValid) return BadRequest("Canot login now.");
+
+
+
+            var user = await _context.Users
+                .Where(u => u.Id.Equals(userId))
+                .FirstOrDefaultAsync();
+
+            if (user == null) return NotFound("user not found.");
+
+            var user2 = await _context.Users
+                .Where(u => u.PhoneNumber != null && u.PhoneNumber.Equals(updateUserRequestDto.PhoneNumber))
+                .FirstOrDefaultAsync();
+
+            if (user2 != null) return NotFound("phone exist.");
+
+            user.FirstName = updateUserRequestDto.FirstName;
+            user.LastName = updateUserRequestDto.LastName;
+            user.PhoneNumber = updateUserRequestDto.PhoneNumber;
+            user.Email = updateUserRequestDto.Email;
+            user.Address = updateUserRequestDto.Address;
+
+            await _context.AddRangeAsync();
+
+            return Ok(updateUserRequestDto);
+        }
+
     }
 }
