@@ -87,7 +87,7 @@ namespace PhoneShopApi.Product.Data
                 },
                 new()
                 {
-                    Id = 3,
+                    Id = 4,
                     Name = "XIAOMI"
                 },
             };
