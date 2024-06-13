@@ -78,7 +78,6 @@ namespace PhoneShopApi.Controllers
                     .FirstOrDefaultAsync();
                 if (phone == null) return NotFound("Phone not found.");
 
-                phone.IsSelling = true;
                 await _context.SaveChangesAsync();
                 var builtInStorage = await _context.BuiltInStorages
                     .Where(b => b.Capacity == createNewPhoneOptionRequest.BuiltInStorageCapacity
