@@ -87,7 +87,7 @@ namespace PhoneShopApi.Product.Controllers
             if (!ModelState.IsValid) return BadRequest();
 
             var newPhoneColor = createPhoneColorRequestDto.ToPhoneColorFromCreatePhoneColorRequestDto();
-            newPhoneColor.ImageUrl = "http://14.225.207.131:19001/Uploads/NotFound.jpg";
+            newPhoneColor.ImageUrl = "http://14.225.207.131:19001/Uploads/NotFound.png";
             await _phoneColorRepo.CreateAsync(newPhoneColor);
 
             return CreatedAtAction(

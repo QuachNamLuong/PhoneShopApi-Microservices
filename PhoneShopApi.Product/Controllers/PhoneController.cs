@@ -31,7 +31,7 @@ namespace PhoneShopApi.Product.Controllers
         [Route("AdminGetAllPhonesSellingFollowBrand")]
         public async Task<IActionResult> AdminGetAllPhonesSellingFollowBrand([FromQuery] QueryPhone query)
         {
-            var phones = await _phoneRepo.GetAllPhonesSellingFollowBrandAsync(query);
+            var phones = await _phoneRepo.AdminGetAllPhonesSellingFollowBrandAsync(query);
             return Ok(phones);
         }
 
