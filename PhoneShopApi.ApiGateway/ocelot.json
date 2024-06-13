@@ -94,6 +94,19 @@
       "UpstreamPathTemplate": "/api/Cart/user/{userId}",
       "UpstreamHttpMethod": [ "GET" ]
     },
+    //Add item to cart
+    {
+      "DownstreamPathTemplate": "/api/Cart/user/{userId}/phoneOption/{phoneOptionId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Cart/user/user/{userId}/phoneOption/{phoneOptionId}",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
     //Update user's cart
     {
       "DownstreamPathTemplate": "/api/Cart/cartId/{cartId}/phoneOption/{phoneOptionId}/quantity/{quantity}",

@@ -87,6 +87,50 @@ namespace PhoneShopApi.Ordering.Controllers
             });
         }
 
+        public record AddItemToCartRequest(string UserId, int PhoneOptionId);
+
+        [HttpPost]
+        [Route("AddItemToCart")]
+        public async Task<IActionResult> AddItemToCartJson([FromBody] AddItemToCartRequest addItemToCartRequest)
+        {
+            var phoneOption = await _context.PhoneOptions.FindAsync(addItemToCartRequest.PhoneOptionId);
+            if (phoneOption == null) return NotFound("phone option not found.");
+            var cart = await _context.Carts
+                .Where(c => c.UserId == addItemToCartRequest.UserId)
+                .FirstOrDefaultAsync();
+            if (cart == null)
+            {
+                cart = new Cart
+                {
+                    UserId = addItemToCartRequest.UserId
+                };
+                if (!ModelState.IsValid) return BadRequest("Cannot create cart for user, please try again.");
+                await _context.Carts.AddAsync(cart);
+                await _context.SaveChangesAsync();
+            }
+
+            var cartItem = await _context.CartItems
+                .Where(c => c.CartId == cart.Id && c.PhoneOptionId == addItemToCartRequest.PhoneOptionId)
+                .FirstOrDefaultAsync();
+            if (cartItem != null) return BadRequest("Item exist in your cart");
+
+            var newCartItem = new CartItem
+            {
+                CartId = cart.Id,
+                PhoneOptionId = addItemToCartRequest.PhoneOptionId,
+                Quantity = 1
+            };
+
+            await _context.CartItems.AddAsync(newCartItem);
+            await _context.SaveChangesAsync();
+            return Ok(new
+            {
+                cartId = newCartItem.CartId,
+                phoneOptionId = newCartItem.PhoneOptionId,
+                quantity = newCartItem.Quantity
+            });
+        }
+
         [HttpPut]
         [Route("cartId/{cartId:int}/phoneOption/{phoneOptionId:int}/quantity/{quantity:int}")]
         public async Task<IActionResult> ChangeQuantityInCartItem(

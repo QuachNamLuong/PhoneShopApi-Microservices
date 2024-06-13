@@ -38,6 +38,7 @@ namespace PhoneShopApi.Product.Repositories
             if (phoneColorToUpdate is null) return null;
 
             phoneColorToUpdate.Name = updatePhoneColorRequestDTO.Name;
+            phoneColorToUpdate.ImageUrl = updatePhoneColorRequestDTO.ImageUrl;
 
             await _context.SaveChangesAsync();
             return phoneColorToUpdate;
