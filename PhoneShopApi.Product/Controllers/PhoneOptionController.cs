@@ -110,7 +110,7 @@ namespace PhoneShopApi.Controllers
                 var phoneColor = new PhoneColor
                 {
                     Name = createNewPhoneOptionRequest.PhoneColorName,
-                    ImageUrl = $"{Request.Scheme}://{Request.Host}/Uploads/NotFound.jpg"
+                    ImageUrl = $"{Request.Scheme}://{Request.Host}/Uploads/NotFound.png"
                 };
 
                 await _context.PhoneColors.AddAsync(phoneColor);
