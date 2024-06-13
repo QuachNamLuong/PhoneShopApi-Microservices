@@ -35,14 +35,14 @@ namespace PhoneShopApi.Product.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateBuiltInStorageRequestDto createRamRequestDto)
+        public async Task<IActionResult> Post([FromBody] CreateBuiltInStorageRequestDto createBuiltInRequestDto)
         {
             var storage = await _context.BuiltInStorages
-                .Where(s => s.Capacity == createRamRequestDto.Capacity && s.Unit == createRamRequestDto.Unit)
+                .Where(s => s.Capacity == createBuiltInRequestDto.Capacity && s.Unit == createBuiltInRequestDto.Unit)
                 .FirstOrDefaultAsync();
             if (storage != null) return Ok(storage.ToRamDto());
 
-            var newRam = createRamRequestDto.ToRamFromCreateRamRequestDto();
+            var newRam = createBuiltInRequestDto.ToRamFromCreateRamRequestDto();
             await _ramRepo.CreateAsync(newRam);
 
             return CreatedAtAction(nameof(Post), new { id = newRam.Id }, newRam.ToRamDto());
@@ -51,9 +51,9 @@ namespace PhoneShopApi.Product.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Put(
             [FromRoute] int id,
-            [FromBody] UpdateBuiltInStorageRequestDto updateRamRequestDto)
+            [FromBody] UpdateBuiltInStorageRequestDto updateBuiltInRequestDto)
         {
-            var ramUpdated = await _ramRepo.UpdateAsync(id, updateRamRequestDto);
+            var ramUpdated = await _ramRepo.UpdateAsync(id, updateBuiltInRequestDto);
             if (ramUpdated is null) return NotFound();
 
             return Ok(ramUpdated.ToRamDto());

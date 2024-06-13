@@ -169,16 +169,16 @@ namespace PhoneShopApi.Ordering.Controllers
             switch (statusCode)
             {
                 case 0:
-                    order.OrderStatus = "Đang chuẩn bị hàng.";
+                    order.OrderStatus = "0";
                     break;
                 case 1:
-                    order.OrderStatus = "Đang giao.";
+                    order.OrderStatus = "1";
                     break;
                 case 2:
-                    order.OrderStatus = "Thành công.";
+                    order.OrderStatus = "2";
                     break;
                 case 3:
-                    order.OrderStatus = "Thất bại.";
+                    order.OrderStatus = "3";
                     break;
                 default:
                     return BadRequest("status code invalid");

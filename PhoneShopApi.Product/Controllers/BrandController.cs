@@ -16,22 +16,19 @@ namespace PhoneShopApi.Product.Controllers
         private readonly PhoneShopDbContext _context = context;
         private readonly IBrandRepository _brandRepo = brandRepo;
 
-
         [HttpGet("AllBrand")]
         public async Task<IActionResult> GetAll()
         {
             var brands = await _brandRepo.GetAllAsync();
             var brandDTOs = brands.Select(b => b.ToBrandDto());
-
             return Ok(brandDTOs);
-
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
             var brand = await _brandRepo.GetById(id);
-            if (brand == null) return NotFound();
+            if (brand == null) return NotFound("Brand not found");
 
             return Ok(brand.ToBrandDto());
         }
@@ -65,6 +62,7 @@ namespace PhoneShopApi.Product.Controllers
         [HttpDelete("{Id:int}")]
         public async Task<IActionResult> DeleteById([FromRoute] int Id)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var brandToDelete = await _brandRepo.DeleteById(Id);
             if (brandToDelete == null) return NotFound("Brand not found.");
 

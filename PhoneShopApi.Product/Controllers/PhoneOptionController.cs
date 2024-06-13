@@ -108,7 +108,7 @@ namespace PhoneShopApi.Controllers
                     .Any(p => p.PhoneColor.Name.ToLower().Equals(createNewPhoneOptionRequest.PhoneColorName.ToLower()));
 
                 if (phoncolor) return Ok();
-                 var phoneColor = new PhoneColor
+                var phoneColor = new PhoneColor
                 {
                     Name = createNewPhoneOptionRequest.PhoneColorName,
                     ImageUrl = $"{Request.Scheme}://{Request.Host}/Uploads/NotFound.jpg"
