@@ -42,7 +42,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - DB_HOST=phoneshopdb
       - DB_NAME=PhoneShopDb
-      - DB_SA_PASSWORD=TGmydb123456
+      - DB_SA_PASSWORD=TGluongkhoatruonganh123456!@#123
     networks:
       - phoneshopapi
 
@@ -61,7 +61,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - DB_HOST=phoneshopdb
       - DB_NAME=PhoneShopDb
-      - DB_SA_PASSWORD=TGmydb123456
+      - DB_SA_PASSWORD=TGluongkhoatruonganh123456!@#123
     networks:
       - phoneshopapi
 
@@ -81,7 +81,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - DB_HOST=phoneshopdb
       - DB_NAME=PhoneShopDb
-      - DB_SA_PASSWORD=TGmydb123456
+      - DB_SA_PASSWORD=TGluongkhoatruonganh123456!@#123
     networks:
       - phoneshopapi
 
