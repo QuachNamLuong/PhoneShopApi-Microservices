@@ -8,10 +8,10 @@ services:
     container_name: phone-shop-db
     image: mcr.microsoft.com/mssql/server:2022-latest
     ports:
-      - 1433:1433
+      - 1432:1432
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=TGmydb123456
+      - SA_PASSWORD=TGluongkhoatruonganh123456!@#123
     networks:
       - phoneshopapi
   phoneshopapi.apigateway:

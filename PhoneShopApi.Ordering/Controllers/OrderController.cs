@@ -163,6 +163,8 @@ namespace PhoneShopApi.Ordering.Controllers
 
             var order = await _context.Orders
                 .Where(o => o.Id == orderId)
+                .Include(o => o.OrderItems)
+                .ThenInclude(i => i.PhoneOption)
                 .FirstOrDefaultAsync();
 
             if (order == null) return NotFound("order not found");
@@ -170,15 +172,28 @@ namespace PhoneShopApi.Ordering.Controllers
             switch (statusCode)
             {
                 case 0:
+                    //Đang chuẩn bị hàng
                     order.OrderStatus = "0";
                     break;
                 case 1:
+                    //Đang giao
                     order.OrderStatus = "1";
                     break;
                 case 2:
+                    //Thành công
                     order.OrderStatus = "2";
                     break;
                 case 3:
+                    //Thất bại
+                    var orderItems = order.OrderItems;
+                    if (orderItems.Count == 0) return BadRequest("Order's item is empty.");
+                    foreach (var item in orderItems)
+                    {
+                        var phoneOption = item.PhoneOption;
+                        if (phoneOption == null) continue;
+                        phoneOption.Quantity += item.Quantity;
+                        await _context.SaveChangesAsync();
+                    }
                     order.OrderStatus = "3";
                     break;
                 default:
