@@ -127,6 +127,7 @@ namespace PhoneShopApi.Product.Repositories
                     {
                         var item = new Item
                         {
+                            IsSelling = phone.IsSelling,
                             PhoneId = phone.Id,
                             PhoneName = phone.Name,
                             BuiltInStorageCapacity = -1,
@@ -146,6 +147,7 @@ namespace PhoneShopApi.Product.Repositories
 
                         var item = new Item
                         {
+                            IsSelling = phone.IsSelling,
                             PhoneId = phone.Id,
                             PhoneName = phone.Name,
                             BuiltInStorageCapacity = phoneOption.BuiltInStorage.Capacity,
@@ -207,6 +209,7 @@ namespace PhoneShopApi.Product.Repositories
                     var phoneOption = phone.PhoneOptions.FirstOrDefault();
                     var item = new Item
                     {
+                        IsSelling = phone.IsSelling,
                         PhoneId = phone.Id,
                         PhoneName = phone.Name,
                         BuiltInStorageCapacity = phoneOption != null ? phoneOption.BuiltInStorage.Capacity : -1,

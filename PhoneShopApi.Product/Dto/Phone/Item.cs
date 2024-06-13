@@ -2,6 +2,7 @@
 {
     public class Item
     {
+        public bool IsSelling { get; set; } 
         public int PhoneId { get; set; }
         public string PhoneName { get; set; } = string.Empty;
         public int BuiltInStorageCapacity { get; set; }
