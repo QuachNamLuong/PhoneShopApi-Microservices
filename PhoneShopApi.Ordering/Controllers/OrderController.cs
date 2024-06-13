@@ -96,6 +96,7 @@ namespace PhoneShopApi.Ordering.Controllers
                 UserId = createOrderRequestDto.UserId,
                 PaymentId = createOrderRequestDto.PaymentId,
                 ShippingAddress = createOrderRequestDto.ShippingAddress,
+                OrderStatus = "0",
                 CreateAt = DateTime.Now
             };
 
