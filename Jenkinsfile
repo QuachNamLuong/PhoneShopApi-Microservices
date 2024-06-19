@@ -2,6 +2,12 @@ pipeline {
 
     agent any
     stages {
+        stage("SCM Checkout"){
+            steps{
+            git 'https://github.com/QuachNamLuong/PhoneShopApi-Microservices.git'
+            }
+        }
+
         stage('Build docker down') {
             steps {
                 sh 'docker compose down'
