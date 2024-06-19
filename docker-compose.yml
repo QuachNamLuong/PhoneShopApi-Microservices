@@ -45,9 +45,6 @@ services:
       - DB_SA_PASSWORD=TGluongkhoatruonganh123456!@#123
     networks:
       - phoneshopapi
-    volumes:
-      - ./PhoneShopApi.Product:/app
-      - /app/wwwroot
 
   phoneshopapi.auth:
     container_name: phone-shop-api.auth
