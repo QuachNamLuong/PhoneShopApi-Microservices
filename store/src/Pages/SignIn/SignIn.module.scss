@@ -1,0 +1,34 @@
+.wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.container {
+}
+
+.container-buffer {
+  margin-top: 40px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.submit {
+  float: right;
+  margin-top: 20px;
+  cursor: pointer;
+  button {
+    cursor: pointer;
+    padding: 16px 40px;
+    background-color: transparent;
+    border: 3px solid var(--text-gold-color);
+    outline: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  button:hover {
+    border: 3px solid var(--primary);
+    color: var(--text-gold-color);
+  }
+}

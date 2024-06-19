@@ -45,6 +45,9 @@ services:
       - DB_SA_PASSWORD=TGluongkhoatruonganh123456!@#123
     networks:
       - phoneshopapi
+    volumes:
+      - ./PhoneShopApi.Product:/app
+      - /app/wwwroot
 
   phoneshopapi.auth:
     container_name: phone-shop-api.auth
@@ -84,6 +87,20 @@ services:
       - DB_SA_PASSWORD=TGluongkhoatruonganh123456!@#123
     networks:
       - phoneshopapi
+
+
+  phoneshop-store:
+    container_name: phone-shop-store
+    build: ./store
+    ports:
+      - "3002:3000"
+    networks:
+      - phoneshopapi
+    volumes:
+      - ./store:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
 
   
 

@@ -1,0 +1,40 @@
+.wrapper {
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  label {
+    flex: 1;
+    cursor: pointer;
+  }
+  input {
+    flex: 5;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 8px;
+    padding: 12px 8px;
+  }
+}
+
+.user-name {
+  display: flex;
+}
+
+.user-password {
+  position: relative;
+  display: flex;
+  .show-hidden {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 10px;
+    top: 0;
+    transform: translateY(75%);
+  }
+}

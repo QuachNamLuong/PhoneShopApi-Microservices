@@ -1,0 +1,21 @@
+.wrapper {
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  top: 120%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 16px;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 200px;
+}
+
+.show {
+  visibility: visible;
+}
+
+.result-searching {
+  color: var(--text-color);
+}

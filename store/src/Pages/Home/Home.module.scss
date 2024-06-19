@@ -1,0 +1,57 @@
+.wrapper {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.container {
+  position: relative;
+  .brand-go-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    top: 2.4px;
+    right: 0;
+    font-size: 2rem;
+    transform: translateX(120%);
+    cursor: pointer;
+    color: #705705;
+    font-weight: 900;
+    scale: 1.2;
+  }
+  .brand-go-left {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2.4rem;
+    transform: translateX(-120%);
+    cursor: pointer;
+    color: #705705;
+    font-weight: 900;
+    scale: 1.2;
+  }
+}
+
+.brand {
+  overflow: hidden;
+  .brand-buffer {
+    display: inline-grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    transition: transform 0.4s;
+  }
+  .brand-item {
+    cursor: pointer;
+    text-align: center;
+    padding: 8px 0;
+    width: 200px;
+    background-color: var(--text-gold-color);
+    border-radius: 8px;
+    border: 2px solid #705705;
+  }
+}

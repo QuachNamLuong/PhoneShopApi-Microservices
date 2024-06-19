@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 20px 0 0 0;
+  padding-top: 60px;
+}
+
+.brand {
+  margin-bottom: 40px;
+  .brand-title {
+    display: flex;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1.6rem;
+}

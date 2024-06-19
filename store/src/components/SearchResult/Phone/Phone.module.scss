@@ -1,0 +1,22 @@
+.wrapper {
+  height: 60px !important;
+  text-decoration: none;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  .phone_img {
+    height: 100%;
+    img {
+      max-width: 100%;
+      height: 100%;
+    }
+  }
+
+  .phone_info {
+    gap: 16px;
+  }
+}

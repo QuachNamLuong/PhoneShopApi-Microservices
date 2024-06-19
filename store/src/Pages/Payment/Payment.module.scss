@@ -1,0 +1,147 @@
+.wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.container {
+}
+
+.container-buffer {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+
+  .order {
+    display: flex;
+  }
+}
+
+.payment-phone {
+  flex: 1;
+  .total-price {
+    color: var(--text-color-reverse);
+    padding: 20px 0;
+    font-size: 2rem;
+    background-color: var(--text-gold-color);
+    border-radius: 8px;
+    text-align: center;
+  }
+}
+
+.payment {
+  flex: 2;
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 8px;
+  padding: 28px;
+  .payment-type {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    .type-item {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      border: 2px solid var(--text-gold-color);
+      outline: none;
+      background-color: transparent;
+      padding: 8px 20px;
+      cursor: pointer;
+      &.type-item:hover {
+        border: 2px solid var(--primary);
+        color: var(--text-gold-color);
+      }
+    }
+
+    .type-item:first-child {
+      filter: grayscale(1);
+      pointer-events: none;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      img {
+        height: 40px;
+        width: 40px;
+      }
+      i {
+        display: flex;
+      }
+    }
+
+    .type-item:last-child {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .payment-user-info {
+    margin-top: 20px;
+  }
+
+  .payment-submit {
+    margin-top: 40px;
+    outline: none;
+    border: 2px solid var(--text-gold-color);
+    background-color: transparent;
+    padding: 8px 16px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    &.payment-submit:hover {
+      border: 2px solid var(--primary);
+      color: var(--text-gold-color);
+    }
+  }
+}
+
+.payment-user-info {
+  fill: grayscale(100%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  margin-top: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 8px;
+  label {
+    flex: 1;
+    cursor: pointer;
+  }
+  input {
+    pointer-events: none;
+    flex: 5;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 8px;
+    padding: 12px 8px;
+  }
+  .change-info:last-child {
+    cursor: pointer;
+    &:hover {
+      color: var(--text-gold-color);
+    }
+  }
+}
+
+.user-name {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.user-address {
+  display: flex;
+}
+
+.user-phoneNumber {
+  display: flex;
+
+  margin-bottom: 16px;
+}
+
+.user-email {
+  display: flex;
+}

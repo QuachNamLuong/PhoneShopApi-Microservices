@@ -1,0 +1,37 @@
+.wrapper {
+  width: 80%;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.container {
+}
+
+.container-buffer {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  padding: 32px;
+  margin-top: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 8px;
+}
+
+.submit {
+  float: right;
+  margin-top: 20px;
+  cursor: pointer;
+  button {
+    padding: 16px 40px;
+    background-color: transparent;
+    border: 3px solid var(--text-gold-color);
+    outline: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  button:hover {
+    border: 3px solid var(--primary);
+    color: var(--text-gold-color);
+  }
+}

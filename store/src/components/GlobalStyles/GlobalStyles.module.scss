@@ -1,0 +1,26 @@
+@import "normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+:root {
+  --primary: #23202a;
+  --text-color: #23202a;
+  --text-color-reverse: #fff;
+  --text-gold-color: #d4c181;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+}

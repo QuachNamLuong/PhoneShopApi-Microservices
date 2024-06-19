@@ -1,0 +1,54 @@
+.wrapper {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border-radius: 8px;
+  .container {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    color: var(--text-primary-color);
+  }
+}
+
+.phone {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  .phone_img {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: scale 0.5s;
+      z-index: -1;
+    }
+
+    &.phone_img:hover img {
+      z-index: -1;
+      scale: 1.2;
+    }
+  }
+
+  .phone_info {
+    .phone_name {
+      &.phone_name:hover {
+        color: var(--text-gold-color);
+      }
+    }
+
+    .phone_rating {
+      color: var(--text-gold-color);
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.phone-price {
+  font-weight: 400;
+}
