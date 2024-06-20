@@ -1,10 +1,11 @@
 pipeline {
-    agent any
-    
+    agent any  // Runs on any available agent (node)
+
     environment {
-        COMPOSE_FILE = 'docker-compose.yml'
-    } 
-        
+        COMPOSE_FILE = 'docker-compose.yml'  // Specifies the docker-compose file to use
+    }
+    
+    stages {
         stage('Run Docker Compose') {
             steps {
                 script {
@@ -12,7 +13,6 @@ pipeline {
                 }
             }
         }
-        
         
         stage('Deploy') {
             steps {
