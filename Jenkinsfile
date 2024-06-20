@@ -3,8 +3,7 @@ pipeline {
     
     environment {
         COMPOSE_FILE = 'docker-compose.yml'
-    }
-            
+    } 
         
         stage('Run Docker Compose') {
             steps {
