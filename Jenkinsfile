@@ -32,8 +32,5 @@ pipeline {
             echo 'Pipeline failed!'
         }
         
-        always {
-            // Clean up any resources here if needed
-        }
     }
 }
