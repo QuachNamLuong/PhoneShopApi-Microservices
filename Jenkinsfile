@@ -4,14 +4,7 @@ pipeline {
     environment {
         COMPOSE_FILE = 'docker-compose.yml'
     }
-    
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'master',git credentialsId: 'your-credentials-id', url: 'https://quachnamluong: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@github.com/QuachNamLuong/PhoneShopApi-Microservices.git'
-            }
-        }
-        
+            
         
         stage('Run Docker Compose') {
             steps {
