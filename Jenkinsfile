@@ -4,6 +4,11 @@ pipeline {
     environment {
         COMPOSE_FILE = 'docker-compose.yml'  // Specifies the docker-compose file to use
     }
+
+    tools {
+        // Define Docker tool installation
+        dockerTool 'docker'  // Refers to the Docker tool configured in Jenkins
+    }
     
     stages {
         stage('Run Docker Compose') {
